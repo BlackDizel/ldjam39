@@ -7,7 +7,9 @@ public enum InputEnum {
     KEY_MOVE_LEFT(Input.Keys.A),
     KEY_MOVE_UP(Input.Keys.W),
     KEY_MOVE_RIGHT(Input.Keys.D),
-    KEY_MOVE_DOWN(Input.Keys.S);
+    KEY_MOVE_DOWN(Input.Keys.S),
+    KEY_SHOW_MOBILE(Input.Keys.SPACE),
+    KEY_CANCEL(Input.Keys.ESCAPE);
 
     private final int key;
 

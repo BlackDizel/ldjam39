@@ -1,5 +1,6 @@
 package org.byters.ldjam39.controller;
 
+import org.byters.engine.controller.ControllerCamera;
 import org.byters.engine.controller.ControllerMain;
 
 public class ControllerWorld {
@@ -19,5 +20,13 @@ public class ControllerWorld {
 
     public float getPositionY(float y) {
         return y * ControllerMain.getInstance().getScale();
+    }
+
+    public float getPositionIgnoreCameraX(float positionX) {
+        return ControllerCamera.getInstance().getCameraPositionX() + getPositionX(positionX);
+    }
+
+    public float getPositionIgnoreCameraY(float positionY) {
+        return ControllerCamera.getInstance().getCameraPositionY() + getPositionY(positionY);
     }
 }
