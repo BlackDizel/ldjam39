@@ -93,7 +93,16 @@ public class ControllerWorldState {
         ((MobileBatteryState) getData(ObjectStateEnum.MOBILE_BATTERY_STATE)).setStartTimeMillis();
     }
 
-    public float getCurrentBatteryState(){
+    public float getCurrentBatteryState() {
         return ((MobileBatteryState) getData(ObjectStateEnum.MOBILE_BATTERY_STATE)).getCurrentStatePercent();
+    }
+
+    public boolean isBatteryEnd() {
+        return getCurrentBatteryState() <= 0;
+    }
+
+    public boolean isAllTasksCheck() {
+        //todo implement
+        return false;
     }
 }

@@ -2,7 +2,9 @@ package org.byters.ldjam39.view;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.controller.ControllerCamera;
+import org.byters.engine.controller.ControllerMain;
 import org.byters.engine.view.IScreen;
+import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.controller.InteractionLocation;
 import org.byters.ldjam39.controller.util.CollisionEnvironment;
 import org.byters.ldjam39.model.GameEnvironment;
@@ -94,6 +96,12 @@ public abstract class ScreenGameBase implements IScreen {
 
         getLocationInfo().updateInteractMessage(player.getOriginX());
         interactionLocation.checkInteraction();
+
+        if (ControllerWorldState.getInstance().isBatteryEnd())
+            ControllerMain.getInstance().navigateScreen(new ScreenGameOver());
+
+        if (ControllerWorldState.getInstance().isAllTasksCheck())
+            ControllerMain.getInstance().navigateScreen(new ScreenWin());
     }
 
     @Override
