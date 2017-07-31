@@ -15,7 +15,7 @@ public class ScreenMenu implements IScreen {
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(tStart,position.x,position.y);
+        batch.draw(tStart, position.x, position.y);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ScreenMenu implements IScreen {
         if (!Gdx.input.justTouched()) return;
 
         if (InputHelper.isContainsPointer(tStart, position.x, position.y))
-            ControllerMain.getInstance().navigateScreen(new ScreenGame());
+            ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
 
     }
 
