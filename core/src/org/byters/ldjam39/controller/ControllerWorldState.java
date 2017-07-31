@@ -1,10 +1,7 @@
 package org.byters.ldjam39.controller;
 
 import org.byters.ldjam39.model.WorldItemsEnum;
-import org.byters.ldjam39.model.state.InventoryState;
-import org.byters.ldjam39.model.state.ObjectStateBase;
-import org.byters.ldjam39.model.state.ObjectStateEnum;
-import org.byters.ldjam39.model.state.WorldState;
+import org.byters.ldjam39.model.state.*;
 
 import java.util.ArrayList;
 
@@ -27,6 +24,7 @@ public class ControllerWorldState {
         data = new ArrayList<ObjectStateBase>();
         data.add(new WorldState());
         data.add(new InventoryState());
+        data.add(new MobileBatteryState());
     }
 
     void addToInventory(WorldItemsEnum item) {
@@ -69,7 +67,7 @@ public class ControllerWorldState {
         if (world == null || inventory == null) return;
         if (!inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET)) return;
 
-        if (inventory.getItem(WorldItemsEnum.MONEY)) {
+        if (inventory.isContains(WorldItemsEnum.MONEY)) {
             world.removeItem(WorldItemsEnum.SELLER);
             world.addItem(WorldItemsEnum.MARKET_DOOR);
         }
@@ -89,5 +87,13 @@ public class ControllerWorldState {
             world.addItem(WorldItemsEnum.SELLER);
             world.removeItem(WorldItemsEnum.MARKET_DOOR);
         }
+    }
+
+    public void startTimer() {
+        ((MobileBatteryState) getData(ObjectStateEnum.MOBILE_BATTERY_STATE)).setStartTimeMillis();
+    }
+
+    public float getCurrentBatteryState(){
+        return ((MobileBatteryState) getData(ObjectStateEnum.MOBILE_BATTERY_STATE)).getCurrentStatePercent();
     }
 }

@@ -8,6 +8,7 @@ import org.byters.engine.controller.ControllerMain;
 import org.byters.engine.model.PointInt;
 import org.byters.engine.view.IScreen;
 import org.byters.engine.view.util.InputHelper;
+import org.byters.ldjam39.controller.ControllerWorldState;
 
 public class ScreenMenu implements IScreen {
 
@@ -23,8 +24,8 @@ public class ScreenMenu implements IScreen {
     public void load(SpriteBatch batch) {
         tStart = new Texture(Gdx.files.internal(TextureEnum.BUTTON_START.toString()));
         position = new PointInt();
-        position.x = (ControllerCamera.getInstance().getCameraWidth()- tStart.getWidth())/2;
-        position.y =  (ControllerCamera.getInstance().getCameraHeight()- tStart.getHeight())/2;
+        position.x = (ControllerCamera.getInstance().getCameraWidth() - tStart.getWidth()) / 2;
+        position.y = (ControllerCamera.getInstance().getCameraHeight() - tStart.getHeight()) / 2;
     }
 
     @Override
@@ -36,8 +37,10 @@ public class ScreenMenu implements IScreen {
     public void input() {
         if (!Gdx.input.justTouched()) return;
 
-        if (InputHelper.isContainsPointer(tStart, position.x, position.y))
+        if (InputHelper.isContainsPointer(tStart, position.x, position.y)) {
+            ControllerWorldState.getInstance().startTimer();
             ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+        }
 
     }
 

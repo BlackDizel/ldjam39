@@ -1,5 +1,7 @@
 package org.byters.ldjam39.model.state;
 
-public enum  ObjectStateEnum {
-    WORLD, INVENTORY
+public enum ObjectStateEnum {
+    WORLD,
+    MOBILE_BATTERY_STATE,
+    INVENTORY
 }
