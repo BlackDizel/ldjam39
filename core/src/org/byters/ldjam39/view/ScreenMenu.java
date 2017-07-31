@@ -9,6 +9,7 @@ import org.byters.engine.model.PointInt;
 import org.byters.engine.view.IScreen;
 import org.byters.engine.view.util.InputHelper;
 import org.byters.ldjam39.controller.ControllerWorldState;
+import org.byters.ldjam39.view.input.InputEnum;
 
 public class ScreenMenu implements IScreen {
 
@@ -35,6 +36,9 @@ public class ScreenMenu implements IScreen {
 
     @Override
     public void input() {
+        if (Gdx.input.isKeyJustPressed(InputEnum.KEY_CONFIRM.getKey()))
+            ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+
         if (!Gdx.input.justTouched()) return;
 
         if (InputHelper.isContainsPointer(tStart, position.x, position.y)) {
