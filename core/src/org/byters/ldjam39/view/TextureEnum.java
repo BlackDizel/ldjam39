@@ -22,7 +22,8 @@ public enum TextureEnum {
     TEXTURE_SHOVEL("graphics/shovel.png"),
     TEXTURE_BENCH_BROKEN("graphics/bench_broken.png"),
     TEXTURE_BENCH_FIXED("graphics/bench_fixed.png"),
-    TEXTURE_FOREST("graphics/bg_forest.png");
+    TEXTURE_FOREST("graphics/bg_forest.png"),
+    TEXTURE_WORMS("graphics/worms.png");
 
     private final String path;
 

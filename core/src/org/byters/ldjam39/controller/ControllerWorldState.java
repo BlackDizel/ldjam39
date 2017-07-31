@@ -39,6 +39,20 @@ public class ControllerWorldState {
             inventory.add(item);
     }
 
+    void getWorms() {
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+
+        if (world == null || inventory == null) return;
+
+        if (world.isContainsItem(WorldItemsEnum.WORMS)
+                && !inventory.isContains(WorldItemsEnum.WORMS)
+                && inventory.isContains(WorldItemsEnum.SHOVEL)) {
+            inventory.add(WorldItemsEnum.WORMS);
+            world.removeItem(WorldItemsEnum.WORMS);
+        }
+    }
+
     private ObjectStateBase getData(ObjectStateEnum id) {
         for (ObjectStateBase item : data)
             if (item.getId() == id)
@@ -51,7 +65,7 @@ public class ControllerWorldState {
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
         if (world == null || inventory == null) return;
 
-        if (inventory.isContains(WorldItemsEnum.HAMMER) && world.isBenchBroken()){
+        if (inventory.isContains(WorldItemsEnum.HAMMER) && world.isBenchBroken()) {
             world.fixBench();
             ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.FIX_BENCH);
         }

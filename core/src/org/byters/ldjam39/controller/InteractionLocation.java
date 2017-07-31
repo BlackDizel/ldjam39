@@ -36,6 +36,10 @@ public class InteractionLocation {
                 ControllerWorldState.getInstance().addToInventory(WorldItemsEnum.SHOVEL);
                 break;
 
+            case GET_WORMS:
+                ControllerWorldState.getInstance().getWorms();
+                break;
+
             case FILL_CAT_DISH:
                 ControllerWorldState.getInstance().fillCatDish();
                 break;

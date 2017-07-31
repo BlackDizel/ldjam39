@@ -17,5 +17,6 @@ public enum InteractEnum {
     FIX_BENCH,
     GO_TO_FOREST,
     RETURN_TO_PARK_FROM_FOREST,
+    GET_WORMS,
     NONE
 }

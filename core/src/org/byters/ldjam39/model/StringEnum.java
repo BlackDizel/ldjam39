@@ -17,7 +17,8 @@ public enum StringEnum {
     GAME_OVER("Mobile is discharged.\nYou can't complete the tasks.\nPress Enter to restart"),
     GAME_WIN("You complete all tasks!\nThanks for playing"),
     FIX_BENCH("fix the bench"),
-    GO_TO_FOREST("go to forest");
+    GO_TO_FOREST("go to forest"),
+    GET_WORMS("get the worms");
 
     private String title;
 
