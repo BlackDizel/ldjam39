@@ -15,5 +15,7 @@ public enum InteractEnum {
     FILL_CAT_DISH,
     GET_SHOVEL,
     FIX_BENCH,
+    GO_TO_FOREST,
+    RETURN_TO_PARK_FROM_FOREST,
     NONE
 }

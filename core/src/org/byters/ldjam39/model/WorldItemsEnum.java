@@ -13,5 +13,6 @@ public enum WorldItemsEnum {
     SHOVEL,
     BENCH_FIXED,
     BENCH_BROKEN,
+    FOREST_PORTAL,
     HOME_DOOR
 }

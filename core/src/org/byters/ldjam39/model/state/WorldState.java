@@ -25,6 +25,7 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.CAT_FOOD_IN_MARKET);
         data.add(WorldItemsEnum.SHOVEL);
         data.add(WorldItemsEnum.BENCH_BROKEN);
+        data.add(WorldItemsEnum.FOREST_PORTAL);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {
