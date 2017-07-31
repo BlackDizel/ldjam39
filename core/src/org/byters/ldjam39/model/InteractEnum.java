@@ -5,5 +5,5 @@ public enum InteractEnum {
     GET_MONEY,
     GO_TO_OUTDOOR,
     GET_FISHING_ROD,
-    FILL_CAT_DISH
+    GO_TO_HOME, FILL_CAT_DISH
 }
