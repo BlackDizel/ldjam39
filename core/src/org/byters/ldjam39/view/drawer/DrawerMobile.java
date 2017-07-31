@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class DrawerMobile {
-    private static final float POSITION_X = 10;
+    private static final float POSITION_X = 32;
     private static final float POSITION_Y_SHOWN = -54;
     private static final float POSITION_Y = -126;
     private WeakReference<Mobile> wMobile;
