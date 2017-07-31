@@ -100,7 +100,7 @@ public abstract class ScreenGameBase implements IScreen {
         if (ControllerWorldState.getInstance().isBatteryEnd())
             ControllerMain.getInstance().navigateScreen(new ScreenGameOver());
 
-        if (ControllerWorldState.getInstance().isAllTasksCheck())
+        if (ControllerWorldState.getInstance().isAllTasksCompleted())
             ControllerMain.getInstance().navigateScreen(new ScreenWin());
     }
 

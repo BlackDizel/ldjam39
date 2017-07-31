@@ -1,5 +1,6 @@
 package org.byters.ldjam39.controller;
 
+import org.byters.ldjam39.model.TaskListEnum;
 import org.byters.ldjam39.model.WorldItemsEnum;
 import org.byters.ldjam39.model.state.*;
 
@@ -25,6 +26,7 @@ public class ControllerWorldState {
         data.add(new WorldState());
         data.add(new InventoryState());
         data.add(new MobileBatteryState());
+        data.add(new TaskListState());
     }
 
     void addToInventory(WorldItemsEnum item) {
@@ -51,7 +53,7 @@ public class ControllerWorldState {
 
         if (inventory.getItem(WorldItemsEnum.CAT_FOOD_IN_MARKET)) {
             world.fillCatDish();
-            //todo complete task
+            ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.CAT_FOOD);
         }
     }
 
@@ -101,8 +103,7 @@ public class ControllerWorldState {
         return getCurrentBatteryState() <= 0;
     }
 
-    public boolean isAllTasksCheck() {
-        //todo implement
-        return false;
+    public boolean isAllTasksCompleted() {
+        return ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).isAllTasksComplete();
     }
 }
