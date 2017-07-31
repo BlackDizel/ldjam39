@@ -36,14 +36,19 @@ public class ScreenMenu implements IScreen {
 
     @Override
     public void input() {
-        if (Gdx.input.isKeyJustPressed(InputEnum.KEY_CONFIRM.getKey()))
+        if (Gdx.input.isKeyJustPressed(InputEnum.KEY_CONFIRM.getKey())) {
+            ScreenGameBase.loadMusic();
             ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+        }
 
         if (!Gdx.input.justTouched()) return;
 
         if (InputHelper.isContainsPointer(tStart, position.x, position.y)) {
             ControllerWorldState.getInstance().startTimer();
-            ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+            {
+                ScreenGameBase.loadMusic();
+                ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+            }
         }
 
     }

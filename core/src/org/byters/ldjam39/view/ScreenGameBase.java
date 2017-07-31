@@ -1,5 +1,7 @@
 package org.byters.ldjam39.view;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.controller.ControllerCamera;
 import org.byters.engine.controller.ControllerMain;
@@ -21,9 +23,9 @@ import org.byters.ldjam39.view.input.InputPlayer;
 
 public abstract class ScreenGameBase implements IScreen {
 
+    private static Music music;
     private int playerPosInitX;
     private int playerPosInitY;
-
     private Player player;
     private GameEnvironment environment;
     private Mobile mobile;
@@ -40,6 +42,16 @@ public abstract class ScreenGameBase implements IScreen {
     ScreenGameBase(int playerInitX, int playerInitY) {
         this.playerPosInitX = playerInitX;
         this.playerPosInitY = playerInitY;
+    }
+
+    public static void loadMusic() {
+        music = Gdx.audio.newMusic(Gdx.files.internal(TextureEnum.FILE_MUSIC.toString()));
+        music.setLooping(true);
+        music.play();
+    }
+
+    public static void disposeMusic() {
+        music.dispose();
     }
 
     abstract LocationInfoBase getLocationInfo();
@@ -97,11 +109,15 @@ public abstract class ScreenGameBase implements IScreen {
         getLocationInfo().updateInteractMessage(player.getOriginX());
         interactionLocation.checkInteraction();
 
-        if (ControllerWorldState.getInstance().isBatteryEnd())
+        if (ControllerWorldState.getInstance().isBatteryEnd()) {
+            disposeMusic();
             ControllerMain.getInstance().navigateScreen(new ScreenGameOver());
+        }
 
-        if (ControllerWorldState.getInstance().isAllTasksCompleted())
+        if (ControllerWorldState.getInstance().isAllTasksCompleted()) {
+            disposeMusic();
             ControllerMain.getInstance().navigateScreen(new ScreenWin());
+        }
     }
 
     @Override

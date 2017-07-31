@@ -26,7 +26,8 @@ public enum TextureEnum {
     TEXTURE_WORMS("graphics/worms.png"),
     TEXTURE_GAMEOVER("graphics/bg_gameover.png"),
     TEXTURE_TREE("graphics/forest_tree.png"),
-    TEXTURE_TREE_HOLE("graphics/tree_hole.png");
+    TEXTURE_TREE_HOLE("graphics/tree_hole.png"),
+    FILE_MUSIC("music.mp3");
 
     private final String path;
 
