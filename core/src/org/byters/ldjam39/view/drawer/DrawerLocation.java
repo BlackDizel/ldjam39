@@ -72,6 +72,8 @@ public class DrawerLocation {
         if (wLocationInfo.get() == null) return;
 
         for (int i = 0; i < wLocationInfo.get().getInteractedObjectsNum(); ++i) {
+            if (!wLocationInfo.get().isDrawableObjectExist(i)) continue;
+
             Texture t = listInteractedObject.get(i);
             if (t == null) continue;
 
