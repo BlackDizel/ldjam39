@@ -1,7 +1,7 @@
 package org.byters.ldjam39.view.input;
 
 import com.badlogic.gdx.Gdx;
-import org.byters.ldjam39.model.LocationInfoBase;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 
 import java.lang.ref.WeakReference;
 

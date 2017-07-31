@@ -1,7 +1,8 @@
-package org.byters.ldjam39.model;
+package org.byters.ldjam39.model.locationInfo;
 
 import org.byters.engine.model.util.HelperMath;
 import org.byters.ldjam39.controller.ControllerWorldState;
+import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
 import java.util.ArrayList;

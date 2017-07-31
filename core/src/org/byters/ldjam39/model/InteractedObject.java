@@ -6,7 +6,7 @@ public class InteractedObject {
     private InteractEnum action;
     private WorldItemsEnum itemWorld;
 
-    InteractedObject(InteractEnum idInteract,
+    public InteractedObject(InteractEnum idInteract,
                             WorldItemsEnum itemWorld,
                             String message,
                             DrawableObject drawableObject) {
@@ -16,11 +16,11 @@ public class InteractedObject {
         this.action = idInteract;
     }
 
-    String getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    DrawableObject getDrawableObject() {
+    public DrawableObject getDrawableObject() {
         return drawableObject;
     }
 
@@ -28,7 +28,7 @@ public class InteractedObject {
         return action;
     }
 
-    WorldItemsEnum getWorldItem() {
+    public WorldItemsEnum getWorldItem() {
         return itemWorld;
     }
 }

@@ -1,4 +1,6 @@
-package org.byters.ldjam39.model;
+package org.byters.ldjam39.model.locationInfo;
+
+import org.byters.ldjam39.model.InteractedObject;
 
 public abstract class LocationInfoBase {
 

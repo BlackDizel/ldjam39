@@ -7,7 +7,7 @@ import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.controller.InteractionLocation;
 import org.byters.ldjam39.controller.util.CollisionEnvironment;
 import org.byters.ldjam39.model.GameEnvironment;
-import org.byters.ldjam39.model.LocationInfoBase;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.model.Mobile;
 import org.byters.ldjam39.model.Player;
 import org.byters.ldjam39.view.drawer.DrawerEnvironment;

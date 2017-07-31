@@ -1,6 +1,6 @@
 package org.byters.ldjam39.model;
 
-class DrawableObject {
+public class DrawableObject {
 
     private String texturePath;
     private float x;
@@ -8,7 +8,7 @@ class DrawableObject {
     private int width;
     private int height;
 
-    DrawableObject(String texturePath, float x, float y, int width, int height) {
+    public DrawableObject(String texturePath, float x, float y, int width, int height) {
         this.texturePath = texturePath;
         this.x = x;
         this.y = y;
@@ -16,31 +16,31 @@ class DrawableObject {
         this.height = height;
     }
 
-    String getTexturePath() {
+    public String getTexturePath() {
         return texturePath;
     }
 
-    float getX() {
+    public float getX() {
         return x;
     }
 
-    float getY() {
+    public float getY() {
         return y;
     }
 
-    int getWidth() {
+    public int getWidth() {
         return width;
     }
 
-    int getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    float getOriginX() {
+    public float getOriginX() {
         return x + width / 2;
     }
 
-    float getOriginY() {
+    public float getOriginY() {
         return y + height / 2;
     }
 }

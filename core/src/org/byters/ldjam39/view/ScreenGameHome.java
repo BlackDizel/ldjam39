@@ -1,8 +1,8 @@
 package org.byters.ldjam39.view;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.byters.ldjam39.model.LocationInfoBase;
-import org.byters.ldjam39.model.LocationInfoHome;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
+import org.byters.ldjam39.model.locationInfo.LocationInfoHome;
 
 public class ScreenGameHome extends ScreenGameBase {
 

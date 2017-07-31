@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.ldjam39.controller.ControllerWorld;
-import org.byters.ldjam39.model.LocationInfoBase;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.view.TextureEnum;
 
 import java.lang.ref.WeakReference;

@@ -2,7 +2,7 @@ package org.byters.ldjam39.controller;
 
 import org.byters.engine.controller.ControllerMain;
 import org.byters.ldjam39.model.InteractedObject;
-import org.byters.ldjam39.model.LocationInfoBase;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.model.WorldItemsEnum;
 import org.byters.ldjam39.view.ScreenOutdoor;
 
