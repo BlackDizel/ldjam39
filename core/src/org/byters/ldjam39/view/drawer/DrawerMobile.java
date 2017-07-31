@@ -8,6 +8,7 @@ import org.byters.engine.controller.ControllerCamera;
 import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.Mobile;
+import org.byters.ldjam39.model.TaskListEnum;
 import org.byters.ldjam39.view.TextureEnum;
 
 import java.lang.ref.WeakReference;
@@ -39,23 +40,59 @@ public class DrawerMobile {
         batch.draw(texture, ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X),
                 wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y);
 
+        drawShapes(batch);
+    }
+
+    private void drawShapes(SpriteBatch batch) {
+        batch.end();
+        shapeRenderer.setProjectionMatrix(ControllerCamera.getInstance().getCameraProjection());
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
         drawBattery(batch);
+        drawTasksComplete(batch);
+
+        shapeRenderer.end();
+        batch.begin();
+    }
+
+    private void drawTasksComplete(SpriteBatch batch) {
+        shapeRenderer.setColor(0, 1, 0, 1);
+
+        //todo refactor
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CAT_FOOD))
+            shapeRenderer.rect(
+                    ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
+                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 67,
+                    2, 2);
+
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CATCH_FISH))
+            shapeRenderer.rect(
+                    ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
+                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 52,
+                    2, 2);
+
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.FIX_BENCH))
+            shapeRenderer.rect(
+                    ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
+                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 37,
+                    2, 2);
+
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.PLANT_TREE))
+            shapeRenderer.rect(
+                    ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
+                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 28,
+                    2, 2);
     }
 
     private void drawBattery(SpriteBatch batch) {
-        batch.end();
 
         float width = ControllerWorldState.getInstance().getCurrentBatteryState() * MAX_BATTERY_WIDTH;
 
-        shapeRenderer.setProjectionMatrix(ControllerCamera.getInstance().getCameraProjection());
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         setColor(shapeRenderer, width);
         shapeRenderer.rect(ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 47 + MAX_BATTERY_WIDTH - width),
                 (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 74,
                 width, 3);
-        shapeRenderer.end();
 
-        batch.begin();
     }
 
     private void setColor(ShapeRenderer shapeRenderer, float width) {

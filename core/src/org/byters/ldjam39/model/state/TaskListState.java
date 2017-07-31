@@ -25,4 +25,8 @@ public class TaskListState extends ObjectStateBase {
     public boolean isAllTasksComplete() {
         return listTaskCompleted.size() == TaskListEnum.values().length;
     }
+
+    public boolean isTaskCompleted(TaskListEnum task) {
+        return listTaskCompleted.contains(task);
+    }
 }

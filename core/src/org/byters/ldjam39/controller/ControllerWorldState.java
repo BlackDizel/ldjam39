@@ -168,4 +168,8 @@ public class ControllerWorldState {
     public boolean isAllTasksCompleted() {
         return ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).isAllTasksComplete();
     }
+
+    public boolean isTaskCompleted(TaskListEnum task) {
+        return ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).isTaskCompleted(task);
+    }
 }
