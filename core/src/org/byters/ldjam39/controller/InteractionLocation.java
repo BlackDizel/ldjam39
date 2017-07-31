@@ -35,6 +35,10 @@ public class InteractionLocation {
             case GET_FISHING_ROD:
                 ControllerWorldState.getInstance().addToInventory(WorldItemsEnum.FISHING_ROD);
                 break;
+            case GET_SHOVEL:
+                ControllerWorldState.getInstance().addToInventory(WorldItemsEnum.SHOVEL);
+                break;
+
             case FILL_CAT_DISH:
                 ControllerWorldState.getInstance().fillCatDish();
                 break;

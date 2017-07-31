@@ -10,5 +10,6 @@ public enum WorldItemsEnum {
     MARKET_DOOR,
     CAT_FOOD_IN_MARKET,
     SELLER,
+    SHOVEL,
     HOME_DOOR
 }

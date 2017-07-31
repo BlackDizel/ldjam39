@@ -13,6 +13,7 @@ public enum StringEnum {
     GO_TO_MARKET("go to market"),
     GET_CAT_FOOD("get cat food"),
     BUY_CAT_FOOD("purchase cat food"),
+    GET_SHOVEL("get shovel"),
     GAME_OVER("Mobile is discharged.\nYou can't complete the tasks.\nPress Enter to restart"),
     GAME_WIN("You complete all tasks!\nThanks for playing");
 
