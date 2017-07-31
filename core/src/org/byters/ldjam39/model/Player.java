@@ -13,12 +13,12 @@ public class Player {
     private int width, height;
 
     public Player() {
-        width = 32; //todo add check texture
-        height = 64;//todo add check texture
-        x = 0;
-        y = 0;
+        width = 18;
+        height = 40;
+        x = 16;
+        y = 12;
         state = PlayerStateEnum.WAITING;
-        direction = new Vector2(0, -1);
+        direction = new Vector2(1, 0);
     }
 
     public boolean isWaiting() {
