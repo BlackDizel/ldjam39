@@ -39,16 +39,22 @@ public class InteractionLocation {
                 ControllerWorldState.getInstance().fillCatDish();
                 break;
             case GO_TO_OUTDOOR:
-                ControllerMain.getInstance().navigateScreen(new ScreenGameOutdoor());
+                ControllerMain.getInstance().navigateScreen(new ScreenGameOutdoor(172,12));
+                break;
+            case RETURN_TO_OUTDOOR:
+                ControllerMain.getInstance().navigateScreen(new ScreenGameOutdoor(16,12));
                 break;
             case GO_TO_HOME:
-                ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+                ControllerMain.getInstance().navigateScreen(new ScreenGameHome(204,12));
                 break;
             case GO_TO_MARKET:
-                ControllerMain.getInstance().navigateScreen(new ScreenGameMarket());
+                ControllerMain.getInstance().navigateScreen(new ScreenGameMarket(178,12));
                 break;
             case GO_TO_PARK:
-                ControllerMain.getInstance().navigateScreen(new ScreenGamePark());
+                ControllerMain.getInstance().navigateScreen(new ScreenGamePark(16,12));
+                break;
+            case RETURN_TO_PARK_FROM_MARKET:
+                ControllerMain.getInstance().navigateScreen(new ScreenGamePark(124,12));
                 break;
         }
     }

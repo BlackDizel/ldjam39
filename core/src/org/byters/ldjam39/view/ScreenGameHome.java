@@ -8,6 +8,14 @@ public class ScreenGameHome extends ScreenGameBase {
 
     private LocationInfoHome locationInfo;
 
+    public ScreenGameHome() {
+        super(16, 12);
+    }
+
+    public ScreenGameHome(int x, int y) {
+        super(x, y);
+    }
+
     @Override
     public void load(SpriteBatch batch) {
         locationInfo = new LocationInfoHome();

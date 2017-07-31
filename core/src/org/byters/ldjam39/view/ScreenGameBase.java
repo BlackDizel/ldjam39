@@ -7,9 +7,9 @@ import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.controller.InteractionLocation;
 import org.byters.ldjam39.controller.util.CollisionEnvironment;
 import org.byters.ldjam39.model.GameEnvironment;
-import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.model.Mobile;
 import org.byters.ldjam39.model.Player;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.view.drawer.DrawerEnvironment;
 import org.byters.ldjam39.view.drawer.DrawerLocation;
 import org.byters.ldjam39.view.drawer.DrawerMobile;
@@ -20,22 +20,26 @@ import org.byters.ldjam39.view.input.InputPlayer;
 
 public abstract class ScreenGameBase implements IScreen {
 
+    int playerPosInitX;
+    int playerPosInitY;
+
     private Player player;
     private GameEnvironment environment;
     private Mobile mobile;
-
     private DrawerMobile drawerMobile;
     private DrawerEnvironment drawerEnvironment;
     private DrawerLocation drawerLocation;
     private DrawerPlayer drawerPlayer;
-
     private CollisionEnvironment collisionEnvironment;
-
     private InputMobile inputMobile;
     private InputInteraction inputInteraction;
     private InputPlayer inputPlayer;
-
     private InteractionLocation interactionLocation;
+
+    public ScreenGameBase(int playerInitX, int playerInitY) {
+        this.playerPosInitX = playerInitX;
+        this.playerPosInitY = playerInitY;
+    }
 
     abstract LocationInfoBase getLocationInfo();
 
@@ -51,7 +55,7 @@ public abstract class ScreenGameBase implements IScreen {
     public void load(SpriteBatch batch) {
         getLocationInfo().load();
 
-        player = new Player();
+        player = new Player(playerPosInitX, playerPosInitY);
         mobile = new Mobile();
         environment = new GameEnvironment();
         collisionEnvironment = new CollisionEnvironment(environment);

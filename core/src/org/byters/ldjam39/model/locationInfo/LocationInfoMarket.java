@@ -14,7 +14,7 @@ public class LocationInfoMarket extends LocationInfoBase {
         super.load();
 
         listInteractedObject.add(new InteractedObject(
-                InteractEnum.GO_TO_PARK,
+                InteractEnum.RETURN_TO_PARK_FROM_MARKET,
                 WorldItemsEnum.MARKET_DOOR,
                 StringEnum.GO_TO_PARK.toString(),
                 new DrawableObject(null, 156, 16, 44, 48)));

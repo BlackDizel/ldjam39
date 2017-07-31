@@ -7,6 +7,10 @@ import org.byters.ldjam39.model.locationInfo.LocationInfoOutdoor;
 public class ScreenGameOutdoor extends ScreenGameBase {
     private LocationInfoOutdoor locationInfoOutdoor;
 
+    public ScreenGameOutdoor(int x, int y) {
+        super(x, y);
+    }
+
     @Override
     public void load(SpriteBatch batch) {
         locationInfoOutdoor = new LocationInfoOutdoor();

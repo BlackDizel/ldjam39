@@ -7,6 +7,10 @@ public class ScreenGameMarket extends ScreenGameBase {
 
     private LocationInfoMarket locationInfoMarket;
 
+    public ScreenGameMarket(int playerInitX, int playerInitY) {
+        super(playerInitX, playerInitY);
+    }
+
     @Override
     LocationInfoBase getLocationInfo() {
         return locationInfoMarket == null ? locationInfoMarket = new LocationInfoMarket()

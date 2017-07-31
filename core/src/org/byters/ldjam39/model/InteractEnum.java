@@ -7,5 +7,8 @@ public enum InteractEnum {
     GET_FISHING_ROD,
     GO_TO_HOME,
     GO_TO_PARK,
-    GO_TO_MARKET, FILL_CAT_DISH
+    GO_TO_MARKET,
+    RETURN_TO_OUTDOOR,
+    RETURN_TO_PARK_FROM_MARKET,
+    FILL_CAT_DISH
 }

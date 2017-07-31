@@ -12,11 +12,11 @@ public class Player {
 
     private int width, height;
 
-    public Player() {
+    public Player(int x, int y) {
         width = 18;
         height = 40;
-        x = 16;
-        y = 12;
+        this.x = x;
+        this.y = y;
         state = PlayerStateEnum.WAITING;
         direction = new Vector2(1, 0);
     }
