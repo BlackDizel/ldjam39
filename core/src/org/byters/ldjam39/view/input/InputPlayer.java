@@ -25,7 +25,7 @@ public class InputPlayer {
         direction.x = 0;
         direction.y = 0;
 
-        boolean isRun = Gdx.input.isKeyPressed(InputEnum.KEY_RUN.getKey());
+        boolean isRun = false;// Gdx.input.isKeyPressed(InputEnum.KEY_RUN.getKey());
 
         if (Gdx.input.isKeyPressed(InputEnum.KEY_MOVE_LEFT.getKey()))
             direction.x = -1;
@@ -33,11 +33,12 @@ public class InputPlayer {
         if (Gdx.input.isKeyPressed(InputEnum.KEY_MOVE_RIGHT.getKey()))
             direction.x = 1;
 
-        if (Gdx.input.isKeyPressed(InputEnum.KEY_MOVE_UP.getKey()))
+       /* if (Gdx.input.isKeyPressed(InputEnum.KEY_MOVE_UP.getKey()))
             direction.y = 1;
 
         if (Gdx.input.isKeyPressed(InputEnum.KEY_MOVE_DOWN.getKey()))
             direction.y = -1;
+        */
 
         float len = direction.len();
         if (len == 0)
