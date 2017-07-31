@@ -2,10 +2,12 @@ package org.byters.ldjam39.controller;
 
 import org.byters.engine.controller.ControllerMain;
 import org.byters.ldjam39.model.InteractedObject;
-import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.model.WorldItemsEnum;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.view.ScreenGameHome;
+import org.byters.ldjam39.view.ScreenGameMarket;
 import org.byters.ldjam39.view.ScreenGameOutdoor;
+import org.byters.ldjam39.view.ScreenGamePark;
 
 import java.lang.ref.WeakReference;
 
@@ -41,6 +43,12 @@ public class InteractionLocation {
                 break;
             case GO_TO_HOME:
                 ControllerMain.getInstance().navigateScreen(new ScreenGameHome());
+                break;
+            case GO_TO_MARKET:
+                ControllerMain.getInstance().navigateScreen(new ScreenGameMarket());
+                break;
+            case GO_TO_PARK:
+                ControllerMain.getInstance().navigateScreen(new ScreenGamePark());
                 break;
         }
     }

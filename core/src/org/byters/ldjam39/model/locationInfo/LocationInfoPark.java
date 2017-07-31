@@ -3,26 +3,26 @@ package org.byters.ldjam39.model.locationInfo;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
-public class LocationInfoOutdoor extends LocationInfoBase {
-
+public class LocationInfoPark extends LocationInfoBase {
     @Override
     public String getBackground() {
-        return TextureEnum.TEXTURE_OUTDOOR.toString();
+        return TextureEnum.TEXTURE_PARK.toString();
     }
 
     @Override
     public void load() {
         super.load();
-        listInteractedObject.add(new InteractedObject(
-                InteractEnum.GO_TO_HOME,
-                WorldItemsEnum.HOME_DOOR,
-                StringEnum.GO_TO_HOME.toString(),
-                new DrawableObject(null, 160, 20, 22, 48)));
 
         listInteractedObject.add(new InteractedObject(
-                InteractEnum.GO_TO_PARK,
+                InteractEnum.GO_TO_MARKET,
+                WorldItemsEnum.MARKET_DOOR,
+                StringEnum.GO_TO_MARKET.toString(),
+                new DrawableObject(null, 102, 18, 46, 48)));
+
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.GO_TO_OUTDOOR,
                 WorldItemsEnum.SIGN_PARK,
-                StringEnum.GO_TO_PARK.toString(),
+                StringEnum.GO_TO_OUTDOOR.toString(),
                 new DrawableObject(TextureEnum.TEXTURE_SIGN_PARK.toString(), 12, 20, 20, 30)));
 
     }

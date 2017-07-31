@@ -20,6 +20,8 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.FISHING_ROD);
         data.add(WorldItemsEnum.CAT_DISH_EMPTY);
         data.add(WorldItemsEnum.HOME_DOOR);
+        data.add(WorldItemsEnum.SIGN_PARK);
+        data.add(WorldItemsEnum.MARKET_DOOR);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {

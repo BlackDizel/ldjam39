@@ -7,5 +7,6 @@ public enum WorldItemsEnum {
     CAT_DISH_FULL,
     INVENTORY_CAT_FOOD,
     MONEY,
-    HOME_DOOR
+    SIGN_PARK,
+    MARKET_DOOR, HOME_DOOR
 }

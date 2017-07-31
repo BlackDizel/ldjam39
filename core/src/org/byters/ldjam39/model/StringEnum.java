@@ -8,7 +8,9 @@ public enum StringEnum {
     GO_TO_HOME("return home"),
     GET_FISHING_ROD("get fishing rod"),
     FILL_CAT_DISH("fill cat dish"),
-    PRESS_E("Press E to ");
+    PRESS_E("Press E to "),
+    GO_TO_PARK("go to park"),
+    GO_TO_MARKET("go to market");
 
     private String title;
 
