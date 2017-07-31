@@ -88,8 +88,8 @@ public abstract class ScreenGameBase implements IScreen {
 
     @Override
     public void update() {
-        ControllerCamera.getInstance().setPosition(ControllerWorld.getInstance().getPositionX(player.getX()),
-                ControllerWorld.getInstance().getPositionY(player.getY()), 0);
+        ControllerCamera.getInstance().setPosition(player.getOriginX(),
+                56, 0);
 
         getLocationInfo().updateInteractMessage(player.getOriginX());
         interactionLocation.checkInteraction();

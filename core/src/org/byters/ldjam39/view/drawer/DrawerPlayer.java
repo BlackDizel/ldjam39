@@ -33,7 +33,7 @@ public class DrawerPlayer {
                 wPlayer.get().getX(), wPlayer.get().getY()
                 , 0, 0,
                 texture.getRegionWidth(), texture.getRegionHeight()
-                , ControllerMain.getInstance().getScale(), ControllerMain.getInstance().getScale(),
+                , 1,1,
                 0
         );
 

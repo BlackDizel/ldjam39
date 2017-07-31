@@ -22,8 +22,7 @@ public class DrawerEnvironment {
         if (wEnvironment.get() == null) return;
 
         for (int i = 0; i < wEnvironment.get().getBoxNum();++i)
-            batch.draw(tBox, ControllerWorld.getInstance().getPositionX(wEnvironment.get().getBoxX(i)),
-                    ControllerWorld.getInstance().getPositionY(wEnvironment.get().getBoxY(i)));
+            batch.draw(tBox, wEnvironment.get().getBoxX(i), wEnvironment.get().getBoxY(i));
     }
 
     public void dispose() {

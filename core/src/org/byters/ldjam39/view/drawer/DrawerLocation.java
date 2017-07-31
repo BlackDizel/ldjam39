@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class DrawerLocation {
-    private static final float MESSAGE_POSITION_Y = -20;
+    private static final float MESSAGE_POSITION_Y = 108;
     private WeakReference<LocationInfoBase> wLocationInfo;
 
     private Texture tBackground;
@@ -50,7 +50,7 @@ public class DrawerLocation {
 
     public void draw(SpriteBatch batch) {
         if (wLocationInfo.get() == null) return;
-        batch.draw(tBackground, 0, 0);
+        batch.draw(tBackground, 0, 1);
 
         drawItems(batch);
         drawStringInfo(batch);

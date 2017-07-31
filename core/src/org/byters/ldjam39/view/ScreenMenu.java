@@ -22,8 +22,8 @@ public class ScreenMenu implements IScreen {
     public void load(SpriteBatch batch) {
         tStart = new Texture(Gdx.files.internal(TextureEnum.BUTTON_START.toString()));
         position = new PointInt();
-        position.x = (int) (Gdx.graphics.getWidth() / 2 - tStart.getWidth() / 2 * ControllerMain.getInstance().getScale());//todo recalc on scale
-        position.y = Gdx.graphics.getHeight() / 2;
+        position.x = 0;
+        position.y = 0;
     }
 
     @Override
