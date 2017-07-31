@@ -1,23 +1,13 @@
 package org.byters.ldjam39.model.locationInfo;
 
-import org.byters.engine.model.util.HelperMath;
-import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
-import java.util.ArrayList;
-
 public class LocationInfoHome extends LocationInfoBase {
-
-    private ArrayList<InteractedObject> listInteractedObject;
-    private InteractedObject nearestObject;
 
     @Override
     public void load() {
         super.load();
-        nearestObject = null;
-        listInteractedObject = new ArrayList<InteractedObject>();
-
         //todo put into json
 
         listInteractedObject.add(new InteractedObject(
@@ -54,56 +44,5 @@ public class LocationInfoHome extends LocationInfoBase {
     @Override
     public String getBackground() {
         return TextureEnum.TEXTURE_HOME.toString();
-    }
-
-    @Override
-    public int getInteractedObjectsNum() {
-        return listInteractedObject == null ? 0 : listInteractedObject.size();
-    }
-
-    @Override
-    public float getInteractedObjectPositionX(int pos) {
-        return listInteractedObject == null || pos < 0 || pos >= listInteractedObject.size() ? 0 : listInteractedObject.get(pos).getDrawableObject().getX();
-    }
-
-    @Override
-    public float getInteractedObjectPositionY(int pos) {
-        return listInteractedObject == null || pos < 0 || pos >= listInteractedObject.size() ? 0 : listInteractedObject.get(pos).getDrawableObject().getY();
-    }
-
-    @Override
-    public String getInteractedObjectTexturePath(int pos) {
-        return listInteractedObject == null || pos < 0 || pos >= listInteractedObject.size() ? null : listInteractedObject.get(pos).getDrawableObject().getTexturePath();
-
-    }
-
-    @Override
-    public String getMessage() {
-        return nearestObject == null ? null : StringEnum.PRESS_E.toString() + nearestObject.getMessage();
-    }
-
-    public void updateInteractMessage(float xPos) {
-        nearestObject = null;
-        if (listInteractedObject == null) return;
-
-        for (InteractedObject item : listInteractedObject)
-            if (HelperMath.distance(item.getDrawableObject().getOriginX(), xPos) < DISTANCE_INTERACT
-                    && ControllerWorldState.getInstance().isWorldContains(item.getWorldItem())) {
-                nearestObject = item;
-                item.getMessage();
-                return;
-            }
-    }
-
-    @Override
-    public void interact() {
-        if (nearestObject == null) return;
-        interactedObject = nearestObject;
-    }
-
-    @Override
-    public boolean isDrawableObjectExist(int pos) {
-        InteractedObject item = listInteractedObject.get(pos);
-        return ControllerWorldState.getInstance().isWorldContains(item.getWorldItem());
     }
 }
