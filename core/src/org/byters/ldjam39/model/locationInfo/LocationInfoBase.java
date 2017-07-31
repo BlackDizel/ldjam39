@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public abstract class LocationInfoBase {
 
     static final float DISTANCE_INTERACT = 12;
-    private InteractedObject interactedObject;
     ArrayList<InteractedObject> listInteractedObject;
+    private InteractedObject interactedObject;
     private InteractedObject nearestObject;
 
     public void load() {
@@ -39,7 +39,11 @@ public abstract class LocationInfoBase {
 
 
     public String getMessage() {
-        return nearestObject == null ? null : StringEnum.PRESS_E.toString() + nearestObject.getMessage();
+        return nearestObject == null
+                || nearestObject.getMessage() == null
+                || nearestObject.getMessage().isEmpty()
+                ? null
+                : StringEnum.PRESS_E.toString() + nearestObject.getMessage();
     }
 
     public void updateInteractMessage(float xPos) {
@@ -50,7 +54,6 @@ public abstract class LocationInfoBase {
             if (HelperMath.distance(item.getDrawableObject().getOriginX(), xPos) < DISTANCE_INTERACT
                     && ControllerWorldState.getInstance().isWorldContains(item.getWorldItem())) {
                 nearestObject = item;
-                item.getMessage();
                 return;
             }
     }

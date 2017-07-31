@@ -39,6 +39,12 @@ public class LocationInfoHome extends LocationInfoBase {
                 WorldItemsEnum.CAT_DISH_EMPTY,
                 StringEnum.FILL_CAT_DISH.toString(),
                 new DrawableObject(null, 122, 16, 8, 4)));
+
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.NONE,
+                WorldItemsEnum.CAT_DISH_FULL,
+                null,
+                new DrawableObject(TextureEnum.TEXTURE_CAT_DISH_FULL.toString(), 121, 15, 8, 4)));
     }
 
     @Override

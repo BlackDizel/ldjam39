@@ -12,5 +12,6 @@ public enum InteractEnum {
     RETURN_TO_PARK_FROM_MARKET,
     GET_CAT_FOOD,
     BUY_CAT_FOOD,
-    FILL_CAT_DISH
+    FILL_CAT_DISH,
+    NONE
 }

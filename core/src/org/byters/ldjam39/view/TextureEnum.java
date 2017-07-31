@@ -17,7 +17,8 @@ public enum TextureEnum {
     TEXTURE_MOBILE_PHONEBOOK1("graphics/mobile/phonebook_1.png"),
     TEXTURE_MOBILE_PHONEBOOK2("graphics/mobile/phonebook_2.png"),
     TEXTURE_MOBILE_PHONEBOOK3("graphics/mobile/phonebook_3.png"),
-    TEXTURE_MOBILE_PHONEBOOK4("graphics/mobile/phonebook_4.png");
+    TEXTURE_MOBILE_PHONEBOOK4("graphics/mobile/phonebook_4.png"),
+    TEXTURE_CAT_DISH_FULL("graphics/cat_dish_full.png");
 
     private final String path;
 
