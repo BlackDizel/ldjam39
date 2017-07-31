@@ -11,5 +11,7 @@ public enum WorldItemsEnum {
     CAT_FOOD_IN_MARKET,
     SELLER,
     SHOVEL,
+    BENCH_FIXED,
+    BENCH_BROKEN,
     HOME_DOOR
 }

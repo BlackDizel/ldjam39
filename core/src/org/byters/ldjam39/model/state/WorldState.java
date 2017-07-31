@@ -24,6 +24,7 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.MARKET_DOOR);
         data.add(WorldItemsEnum.CAT_FOOD_IN_MARKET);
         data.add(WorldItemsEnum.SHOVEL);
+        data.add(WorldItemsEnum.BENCH_BROKEN);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {
@@ -52,5 +53,16 @@ public class WorldState extends ObjectStateBase {
 
     public void removeItem(WorldItemsEnum item) {
         data.remove(item);
+    }
+
+    public void fixBench() {
+        if (data.contains(WorldItemsEnum.BENCH_FIXED))
+            return;
+        data.remove(WorldItemsEnum.BENCH_BROKEN);
+        data.add(WorldItemsEnum.BENCH_FIXED);
+    }
+
+    public boolean isBenchBroken() {
+        return data.contains(WorldItemsEnum.BENCH_BROKEN);
     }
 }

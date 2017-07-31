@@ -19,7 +19,9 @@ public enum TextureEnum {
     TEXTURE_MOBILE_PHONEBOOK3("graphics/mobile/phonebook_3.png"),
     TEXTURE_MOBILE_PHONEBOOK4("graphics/mobile/phonebook_4.png"),
     TEXTURE_CAT_DISH_FULL("graphics/cat_dish_full.png"),
-    TEXTURE_SHOVEL("graphics/shovel.png");
+    TEXTURE_SHOVEL("graphics/shovel.png"),
+    TEXTURE_BENCH_BROKEN("graphics/bench_broken.png"),
+    TEXTURE_BENCH_FIXED("graphics/bench_fixed.png");
 
     private final String path;
 

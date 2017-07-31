@@ -36,5 +36,17 @@ public class LocationInfoOutdoor extends LocationInfoBase {
                 StringEnum.GET_SHOVEL.toString(),
                 new DrawableObject(TextureEnum.TEXTURE_SHOVEL.toString(), 72, 16, 12, 36)));
 
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.FIX_BENCH,
+                WorldItemsEnum.BENCH_BROKEN,
+                StringEnum.FIX_BENCH.toString(),
+                new DrawableObject(TextureEnum.TEXTURE_BENCH_BROKEN.toString(), 86, 12, 38, 26)));
+
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.NONE,
+                WorldItemsEnum.BENCH_FIXED,
+                null,
+                new DrawableObject(TextureEnum.TEXTURE_BENCH_FIXED.toString(), 86, 12, 38, 26)));
+
     }
 }

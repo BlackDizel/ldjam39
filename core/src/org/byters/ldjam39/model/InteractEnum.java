@@ -14,5 +14,6 @@ public enum InteractEnum {
     BUY_CAT_FOOD,
     FILL_CAT_DISH,
     GET_SHOVEL,
+    FIX_BENCH,
     NONE
 }

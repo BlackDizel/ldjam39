@@ -46,6 +46,17 @@ public class ControllerWorldState {
         return null;
     }
 
+    public void fixBench() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return;
+
+        if (inventory.isContains(WorldItemsEnum.HAMMER) && world.isBenchBroken()){
+            world.fixBench();
+            ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.FIX_BENCH);
+        }
+    }
+
     void fillCatDish() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
