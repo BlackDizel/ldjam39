@@ -28,7 +28,7 @@ public class LocationInfoPark extends LocationInfoBase {
                 InteractEnum.RETURN_TO_OUTDOOR,
                 WorldItemsEnum.SIGN_PARK,
                 StringEnum.GO_TO_OUTDOOR.toString(),
-                new DrawableObject(TextureEnum.TEXTURE_SIGN_PARK.toString(), 12, 20, 20, 30)));
+                new DrawableObject(TextureEnum.TEXTURE_SIGN_PARK.toString(), 12, 16, 20, 30)));
 
     }
 }
