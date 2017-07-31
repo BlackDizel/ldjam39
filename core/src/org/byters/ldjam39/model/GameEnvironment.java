@@ -2,7 +2,9 @@ package org.byters.ldjam39.model;
 
 
 import org.byters.engine.model.PointInt;
+import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class GameEnvironment {
@@ -10,12 +12,11 @@ public class GameEnvironment {
     private ArrayList<PointInt> listBox;
     private PointInt boxSize;
 
-    public GameEnvironment() {
+    public GameEnvironment(LocationInfoBase locationInfo) {
         //todo simple box list for demonstration. I prefer store game data in json files
         listBox = new ArrayList<PointInt>();
-        listBox.add(new PointInt(40, 30));
-        listBox.add(new PointInt(60, 50));
-        listBox.add(new PointInt(40, 60));
+        listBox.add(new PointInt(-32, 32));
+        listBox.add(new PointInt(locationInfo.getRightBoundPositionX(), 32));
 
         boxSize = new PointInt(32, 32); //todo add check texture size
     }

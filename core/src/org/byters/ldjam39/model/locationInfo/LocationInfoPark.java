@@ -10,6 +10,11 @@ public class LocationInfoPark extends LocationInfoBase {
     }
 
     @Override
+    public int getRightBoundPositionX() {
+        return 725;
+    }
+
+    @Override
     public void load() {
         super.load();
 

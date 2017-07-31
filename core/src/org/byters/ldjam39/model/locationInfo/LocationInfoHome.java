@@ -45,4 +45,9 @@ public class LocationInfoHome extends LocationInfoBase {
     public String getBackground() {
         return TextureEnum.TEXTURE_HOME.toString();
     }
+
+    @Override
+    public int getRightBoundPositionX() {
+        return 380;
+    }
 }

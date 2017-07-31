@@ -10,6 +10,11 @@ public class LocationInfoMarket extends LocationInfoBase {
     }
 
     @Override
+    public int getRightBoundPositionX() {
+        return 400;
+    }
+
+    @Override
     public void load() {
         super.load();
 

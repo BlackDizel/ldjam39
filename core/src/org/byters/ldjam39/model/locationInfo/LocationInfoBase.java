@@ -67,6 +67,8 @@ public abstract class LocationInfoBase {
 
     public abstract String getBackground();
 
+    public abstract int getRightBoundPositionX();
+
     public InteractedObject getInteractedObject() {
         return interactedObject;
     }

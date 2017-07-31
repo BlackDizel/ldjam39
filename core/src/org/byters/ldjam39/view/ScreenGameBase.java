@@ -20,8 +20,8 @@ import org.byters.ldjam39.view.input.InputPlayer;
 
 public abstract class ScreenGameBase implements IScreen {
 
-    int playerPosInitX;
-    int playerPosInitY;
+    private int playerPosInitX;
+    private int playerPosInitY;
 
     private Player player;
     private GameEnvironment environment;
@@ -36,7 +36,7 @@ public abstract class ScreenGameBase implements IScreen {
     private InputPlayer inputPlayer;
     private InteractionLocation interactionLocation;
 
-    public ScreenGameBase(int playerInitX, int playerInitY) {
+    ScreenGameBase(int playerInitX, int playerInitY) {
         this.playerPosInitX = playerInitX;
         this.playerPosInitY = playerInitY;
     }
@@ -57,7 +57,7 @@ public abstract class ScreenGameBase implements IScreen {
 
         player = new Player(playerPosInitX, playerPosInitY);
         mobile = new Mobile();
-        environment = new GameEnvironment();
+        environment = new GameEnvironment(getLocationInfo());
         collisionEnvironment = new CollisionEnvironment(environment);
 
         /*region drawers*/

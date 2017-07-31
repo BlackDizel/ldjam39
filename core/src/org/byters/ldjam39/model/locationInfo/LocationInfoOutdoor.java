@@ -11,6 +11,11 @@ public class LocationInfoOutdoor extends LocationInfoBase {
     }
 
     @Override
+    public int getRightBoundPositionX() {
+        return 192;
+    }
+
+    @Override
     public void load() {
         super.load();
         listInteractedObject.add(new InteractedObject(
