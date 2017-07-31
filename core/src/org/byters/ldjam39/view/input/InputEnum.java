@@ -13,7 +13,8 @@ public enum InputEnum {
     KEY_INTERACT(Input.Keys.E),
     KEY_MOBILE_NEXT(Input.Keys.RIGHT),
     KEY_MOBILE_PREV(Input.Keys.LEFT),
-    KEY_MOBILE_PHONEBOOK(Input.Keys.NUM_3);
+    KEY_MOBILE_PHONEBOOK(Input.Keys.NUM_3),
+    KEY_CONFIRM(Input.Keys.ENTER);
 
     private final int key;
 
