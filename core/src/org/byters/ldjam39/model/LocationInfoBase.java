@@ -3,6 +3,11 @@ package org.byters.ldjam39.model;
 public abstract class LocationInfoBase {
 
     static final float DISTANCE_INTERACT = 12;
+    InteractedObject interactedObject;
+
+    public void load() {
+        interactedObject = null;
+    }
 
     public abstract String getBackground();
 
@@ -19,4 +24,10 @@ public abstract class LocationInfoBase {
     public abstract String getMessage();
 
     public abstract void interact();
+
+    public InteractedObject getInteractedObject() {
+        return interactedObject;
+    }
+
+    public abstract boolean isDrawableObjectExist(int pos);
 }
