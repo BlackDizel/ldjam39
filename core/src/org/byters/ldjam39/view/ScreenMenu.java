@@ -3,9 +3,7 @@ package org.byters.ldjam39.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.byters.engine.controller.ControllerCamera;
 import org.byters.engine.controller.ControllerMain;
-import org.byters.engine.model.PointInt;
 import org.byters.engine.view.IScreen;
 import org.byters.engine.view.util.InputHelper;
 import org.byters.ldjam39.controller.ControllerWorldState;
@@ -14,19 +12,15 @@ import org.byters.ldjam39.view.input.InputEnum;
 public class ScreenMenu implements IScreen {
 
     private Texture tStart;
-    private PointInt position;
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(tStart, position.x, position.y);
+        batch.draw(tStart, 0, 0);
     }
 
     @Override
     public void load(SpriteBatch batch) {
-        tStart = new Texture(Gdx.files.internal(TextureEnum.BUTTON_START.toString()));
-        position = new PointInt();
-        position.x = (ControllerCamera.getInstance().getCameraWidth() - tStart.getWidth()) / 2;
-        position.y = (ControllerCamera.getInstance().getCameraHeight() - tStart.getHeight()) / 2;
+        tStart = new Texture(Gdx.files.internal(TextureEnum.TEXTURE_MENU.toString()));
     }
 
     @Override
@@ -43,7 +37,7 @@ public class ScreenMenu implements IScreen {
 
         if (!Gdx.input.justTouched()) return;
 
-        if (InputHelper.isContainsPointer(tStart, position.x, position.y)) {
+        if (InputHelper.isContainsPointer(74, 54, 46, 12)) {
             ControllerWorldState.getInstance().startTimer();
             {
                 ScreenGameBase.loadMusic();
@@ -51,6 +45,8 @@ public class ScreenMenu implements IScreen {
             }
         }
 
+        if (InputHelper.isContainsPointer(74, 32, 46, 12))
+            Gdx.app.exit();
     }
 
     @Override

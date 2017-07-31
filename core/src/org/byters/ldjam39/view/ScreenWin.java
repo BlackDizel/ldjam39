@@ -1,26 +1,22 @@
 package org.byters.ldjam39.view;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.byters.engine.controller.ControllerCamera;
+import org.byters.engine.controller.ControllerMain;
 import org.byters.engine.view.IScreen;
-import org.byters.ldjam39.controller.ControllerWorld;
+import org.byters.engine.view.util.InputHelper;
 import org.byters.ldjam39.controller.ControllerWorldState;
-import org.byters.ldjam39.model.StringEnum;
+import org.byters.ldjam39.view.input.InputEnum;
 
 public class ScreenWin implements IScreen {
 
 
-    private BitmapFont font;
-    private GlyphLayout layout;
+    private Texture tWin;
 
     @Override
     public void draw(SpriteBatch batch) {
-        font.draw(batch, layout
-                , ControllerWorld.getInstance().getPositionIgnoreCameraX(-layout.width / 2),
-                (ControllerCamera.getInstance().getCameraHeight() + layout.height) / 2);
+        batch.draw(tWin, 0, 0);
     }
 
     @Override
@@ -28,9 +24,7 @@ public class ScreenWin implements IScreen {
 
         ControllerWorldState.getInstance().reset();
 
-        font = new BitmapFont(Gdx.files.internal(TextureEnum.TEXTURE_FONT.toString()));
-        layout = new GlyphLayout();
-        layout.setText(font, StringEnum.GAME_WIN.toString());
+        tWin = new Texture(Gdx.files.internal(TextureEnum.TEXTURE_WIN.toString()));
     }
 
     @Override
@@ -40,11 +34,16 @@ public class ScreenWin implements IScreen {
 
     @Override
     public void input() {
-        //todo implement
+        if (Gdx.input.isKeyJustPressed(InputEnum.KEY_CONFIRM.getKey()))
+            ControllerMain.getInstance().navigateScreen(new ScreenMenu());
+
+        if (!Gdx.input.justTouched()) return;
+        if (InputHelper.isContainsPointer(112, 34, 44, 12))
+            ControllerMain.getInstance().navigateScreen(new ScreenMenu());
     }
 
     @Override
     public void dispose() {
-        font.dispose();
+        tWin.dispose();
     }
 }
