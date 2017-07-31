@@ -76,5 +76,9 @@ public class Player {
         return height;
     }
 
+    public float getOriginX() {
+        return x + width / 2;
+    }
+
     private enum PlayerStateEnum {WAITING, MOVE, RUN}
 }
