@@ -11,7 +11,6 @@ public class ScreenGameHome extends ScreenGameBase {
     @Override
     public void load(SpriteBatch batch) {
         locationInfo = new LocationInfoHome();
-        locationInfo.load();
         super.load(batch);
     }
 

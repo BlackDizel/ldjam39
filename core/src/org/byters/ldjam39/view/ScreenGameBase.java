@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.controller.ControllerCamera;
 import org.byters.engine.view.IScreen;
 import org.byters.ldjam39.controller.ControllerWorld;
+import org.byters.ldjam39.controller.InteractionLocation;
 import org.byters.ldjam39.controller.util.CollisionEnvironment;
 import org.byters.ldjam39.model.GameEnvironment;
 import org.byters.ldjam39.model.LocationInfoBase;
@@ -34,6 +35,8 @@ public abstract class ScreenGameBase implements IScreen {
     private InputInteraction inputInteraction;
     private InputPlayer inputPlayer;
 
+    private InteractionLocation interactionLocation;
+
     abstract LocationInfoBase getLocationInfo();
 
     @Override
@@ -46,6 +49,8 @@ public abstract class ScreenGameBase implements IScreen {
 
     @Override
     public void load(SpriteBatch batch) {
+        getLocationInfo().load();
+
         player = new Player();
         mobile = new Mobile();
         environment = new GameEnvironment();
@@ -73,6 +78,8 @@ public abstract class ScreenGameBase implements IScreen {
 
         inputInteraction = new InputInteraction(getLocationInfo());
         /*endregion*/
+
+        interactionLocation = new InteractionLocation(getLocationInfo());
     }
 
     @Override
@@ -81,6 +88,7 @@ public abstract class ScreenGameBase implements IScreen {
                 ControllerWorld.getInstance().getPositionY(player.getY()), 0);
 
         getLocationInfo().updateInteractMessage(player.getOriginX());
+        interactionLocation.checkInteraction();
     }
 
     @Override
