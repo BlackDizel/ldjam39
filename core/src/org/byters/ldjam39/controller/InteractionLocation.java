@@ -38,6 +38,13 @@ public class InteractionLocation {
             case FILL_CAT_DISH:
                 ControllerWorldState.getInstance().fillCatDish();
                 break;
+            case BUY_CAT_FOOD:
+                ControllerWorldState.getInstance().buyCatFood();
+                break;
+            case GET_CAT_FOOD:
+                ControllerWorldState.getInstance().getCatFood();
+                break;
+
             case GO_TO_OUTDOOR:
                 ControllerMain.getInstance().navigateScreen(new ScreenGameOutdoor(172,12));
                 break;

@@ -22,13 +22,14 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.HOME_DOOR);
         data.add(WorldItemsEnum.SIGN_PARK);
         data.add(WorldItemsEnum.MARKET_DOOR);
+        data.add(WorldItemsEnum.CAT_FOOD_IN_MARKET);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {
         return data.contains(item);
     }
 
-    public boolean tryGetItem(WorldItemsEnum item){
+    public boolean tryGetItem(WorldItemsEnum item) {
         if (data.contains(item)) {
             data.remove(item);
             return true;
@@ -41,5 +42,14 @@ public class WorldState extends ObjectStateBase {
             data.remove(WorldItemsEnum.CAT_DISH_EMPTY);
             data.add(WorldItemsEnum.CAT_DISH_FULL);
         }
+    }
+
+    public void addItem(WorldItemsEnum item) {
+        if (data.contains(item)) return;
+        data.add(item);
+    }
+
+    public void removeItem(WorldItemsEnum item) {
+        data.remove(item);
     }
 }

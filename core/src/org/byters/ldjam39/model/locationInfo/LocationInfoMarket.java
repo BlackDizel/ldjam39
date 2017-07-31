@@ -24,5 +24,17 @@ public class LocationInfoMarket extends LocationInfoBase {
                 StringEnum.GO_TO_PARK.toString(),
                 new DrawableObject(null, 156, 16, 44, 48)));
 
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.GET_CAT_FOOD,
+                WorldItemsEnum.CAT_FOOD_IN_MARKET,
+                StringEnum.GET_CAT_FOOD.toString(),
+                new DrawableObject(null, 34, 16, 30, 48)));
+
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.BUY_CAT_FOOD,
+                WorldItemsEnum.SELLER,
+                StringEnum.BUY_CAT_FOOD.toString(),
+                new DrawableObject(null, 222, 16, 46, 48)));
+
     }
 }

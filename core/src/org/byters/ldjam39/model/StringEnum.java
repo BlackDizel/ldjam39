@@ -10,7 +10,9 @@ public enum StringEnum {
     FILL_CAT_DISH("fill cat dish"),
     PRESS_E("Press E to "),
     GO_TO_PARK("go to park"),
-    GO_TO_MARKET("go to market");
+    GO_TO_MARKET("go to market"),
+    GET_CAT_FOOD("get cat food"),
+    BUY_CAT_FOOD("purchase cat food");
 
     private String title;
 

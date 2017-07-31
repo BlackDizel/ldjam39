@@ -51,13 +51,43 @@ public class ControllerWorldState {
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
         if (world == null || inventory == null) return;
 
-        if (inventory.getItem(WorldItemsEnum.INVENTORY_CAT_FOOD))
+        if (inventory.getItem(WorldItemsEnum.CAT_FOOD_IN_MARKET)) {
             world.fillCatDish();
+            //todo complete task
+        }
     }
 
     public boolean isWorldContains(WorldItemsEnum item) {
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
         if (world == null || item == null) return false;
         return world.isContainsItem(item);
+    }
+
+    void buyCatFood() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return;
+        if (!inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET)) return;
+
+        if (inventory.getItem(WorldItemsEnum.MONEY)) {
+            world.removeItem(WorldItemsEnum.SELLER);
+            world.addItem(WorldItemsEnum.MARKET_DOOR);
+        }
+    }
+
+    void getCatFood() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return;
+
+        if (!inventory.isContains(WorldItemsEnum.MONEY)
+                || inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET))
+            return;
+
+        if (world.tryGetItem(WorldItemsEnum.CAT_FOOD_IN_MARKET)) {
+            inventory.add(WorldItemsEnum.CAT_FOOD_IN_MARKET);
+            world.addItem(WorldItemsEnum.SELLER);
+            world.removeItem(WorldItemsEnum.MARKET_DOOR);
+        }
     }
 }

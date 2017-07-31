@@ -28,4 +28,8 @@ public class InventoryState extends ObjectStateBase {
         }
         return false;
     }
+
+    public boolean isContains(WorldItemsEnum item) {
+        return data.contains(item);
+    }
 }
