@@ -7,7 +7,8 @@ public enum TextureEnum {
     TEXTURE_MOBILE("graphics/mobile.png"),
     TEXTURE_HOME("graphics/bg_home.png"),
     TEXTURE_FISHING_ROD("graphics/home_fishing_rod.png"),
-    TEXTURE_FONT("font/freesans15white.fnt");
+    TEXTURE_FONT("font/freesans15white.fnt"),
+    TEXTURE_OUTDOOR("graphics/bg_outdoor.png");
 
     private final String path;
 

@@ -5,6 +5,7 @@ public enum StringEnum {
     GET_HAMMER("get hammer from locker"),
     GET_MONEY("get money from store"),
     GO_TO_OUTDOOR("go to outdoor"),
+    GO_TO_HOME("return home"),
     GET_FISHING_ROD("get fishing rod"),
     FILL_CAT_DISH("fill cat dish"),
     PRESS_E("Press E to ");
