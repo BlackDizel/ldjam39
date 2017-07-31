@@ -4,7 +4,7 @@ public class MobileBatteryState extends ObjectStateBase {
 
     private static final int NO_VALUE = 0;
 
-    private long timeMillis = 80000; //TODO IMPLEMENT
+    private long timeMillis = 90000; //TODO IMPLEMENT
     private long startTimeMillis;
 
     public MobileBatteryState() {
