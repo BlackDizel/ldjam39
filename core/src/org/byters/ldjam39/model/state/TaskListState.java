@@ -18,6 +18,7 @@ public class TaskListState extends ObjectStateBase {
     }
 
     public void completeTask(TaskListEnum task) {
+        if (listTaskCompleted.contains(task)) return;
         listTaskCompleted.add(task);
     }
 

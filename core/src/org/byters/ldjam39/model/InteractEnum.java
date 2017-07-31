@@ -18,5 +18,6 @@ public enum InteractEnum {
     GO_TO_FOREST,
     RETURN_TO_PARK_FROM_FOREST,
     GET_WORMS,
+    CATCH_FISH,
     NONE
 }

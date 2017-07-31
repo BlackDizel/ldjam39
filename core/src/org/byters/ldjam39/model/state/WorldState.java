@@ -27,6 +27,7 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.BENCH_BROKEN);
         data.add(WorldItemsEnum.FOREST_PORTAL);
         data.add(WorldItemsEnum.WORMS);
+        data.add(WorldItemsEnum.POUND);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {

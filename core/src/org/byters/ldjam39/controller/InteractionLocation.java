@@ -52,6 +52,9 @@ public class InteractionLocation {
             case FIX_BENCH:
                 ControllerWorldState.getInstance().fixBench();
                 break;
+            case CATCH_FISH:
+                ControllerWorldState.getInstance().catchFish();
+                break;
 
             case GO_TO_OUTDOOR:
                 ControllerMain.getInstance().navigateScreen(new ScreenGameOutdoor(172, 12));

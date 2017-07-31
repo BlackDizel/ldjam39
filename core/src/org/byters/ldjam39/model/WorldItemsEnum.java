@@ -15,5 +15,6 @@ public enum WorldItemsEnum {
     BENCH_BROKEN,
     FOREST_PORTAL,
     WORMS,
+    POUND,
     HOME_DOOR
 }

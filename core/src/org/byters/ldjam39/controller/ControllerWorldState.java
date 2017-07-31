@@ -71,6 +71,19 @@ public class ControllerWorldState {
         }
     }
 
+
+    public void catchFish() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return;
+
+        if (inventory.isContains(WorldItemsEnum.WORMS)
+                && inventory.isContains(WorldItemsEnum.FISHING_ROD)) {
+            world.removeItem(WorldItemsEnum.POUND);
+            ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.CATCH_FISH);
+        }
+    }
+
     void fillCatDish() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);

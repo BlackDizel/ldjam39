@@ -35,5 +35,11 @@ public class LocationInfoPark extends LocationInfoBase {
                 WorldItemsEnum.FOREST_PORTAL,
                 StringEnum.GO_TO_FOREST.toString(),
                 new DrawableObject(null, 680, 18, 46, 48)));
+
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.CATCH_FISH,
+                WorldItemsEnum.POUND,
+                StringEnum.CATCH_FISH.toString(),
+                new DrawableObject(null, 550, 18, 30, 48)));
     }
 }

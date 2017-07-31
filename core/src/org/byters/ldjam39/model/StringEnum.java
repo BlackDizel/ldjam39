@@ -18,7 +18,8 @@ public enum StringEnum {
     GAME_WIN("You complete all tasks!\nThanks for playing"),
     FIX_BENCH("fix the bench"),
     GO_TO_FOREST("go to forest"),
-    GET_WORMS("get the worms");
+    GET_WORMS("get the worms"),
+    CATCH_FISH("catch fish");
 
     private String title;
 
