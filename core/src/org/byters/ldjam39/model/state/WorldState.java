@@ -28,6 +28,8 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.FOREST_PORTAL);
         data.add(WorldItemsEnum.WORMS);
         data.add(WorldItemsEnum.POUND);
+        data.add(WorldItemsEnum.FOREST_TREE);
+        data.add(WorldItemsEnum.TREE_HOLE_IN_OUTDOOR);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {
@@ -67,5 +69,10 @@ public class WorldState extends ObjectStateBase {
 
     public boolean isBenchBroken() {
         return data.contains(WorldItemsEnum.BENCH_BROKEN);
+    }
+
+    public void plantTree() {
+        data.remove(WorldItemsEnum.TREE_HOLE_IN_OUTDOOR);
+        data.add(WorldItemsEnum.TREE_IN_OUTDOOR);
     }
 }

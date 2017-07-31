@@ -19,7 +19,9 @@ public enum StringEnum {
     FIX_BENCH("fix the bench"),
     GO_TO_FOREST("go to forest"),
     GET_WORMS("get the worms"),
-    CATCH_FISH("catch fish");
+    CATCH_FISH("catch fish"),
+    GET_TREE("dig out tree"),
+    PLAT_TREE("plant the tree");
 
     private String title;
 

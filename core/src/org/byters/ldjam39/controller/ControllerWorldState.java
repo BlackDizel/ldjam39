@@ -71,6 +71,30 @@ public class ControllerWorldState {
         }
     }
 
+    public void plantTree() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return;
+
+        if (inventory.isContains(WorldItemsEnum.FOREST_TREE)
+                && world.isContainsItem(WorldItemsEnum.TREE_HOLE_IN_OUTDOOR)) {
+            world.plantTree();
+            inventory.removeItem(WorldItemsEnum.FOREST_TREE);
+            ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.PLANT_TREE);
+        }
+    }
+
+    public void getTree() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return;
+
+        if (inventory.isContains(WorldItemsEnum.SHOVEL)
+                && !inventory.isContains(WorldItemsEnum.FOREST_TREE)) {
+            world.removeItem(WorldItemsEnum.FOREST_TREE);
+            inventory.add(WorldItemsEnum.FOREST_TREE);
+        }
+    }
 
     public void catchFish() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);

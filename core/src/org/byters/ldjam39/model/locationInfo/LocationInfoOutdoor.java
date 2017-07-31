@@ -48,5 +48,17 @@ public class LocationInfoOutdoor extends LocationInfoBase {
                 null,
                 new DrawableObject(TextureEnum.TEXTURE_BENCH_FIXED.toString(), 86, 12, 38, 26)));
 
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.PLANT_TREE,
+                WorldItemsEnum.TREE_HOLE_IN_OUTDOOR,
+                StringEnum.PLAT_TREE.toString(),
+                new DrawableObject(TextureEnum.TEXTURE_TREE_HOLE.toString(), 32, 8, 38, 26)));
+
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.NONE,
+                WorldItemsEnum.TREE_IN_OUTDOOR,
+                null,
+                new DrawableObject(TextureEnum.TEXTURE_TREE.toString(), 20, 12, 38, 26)));
+
     }
 }

@@ -30,5 +30,11 @@ public class LocationInfoForest extends LocationInfoBase {
                 StringEnum.GET_WORMS.toString(),
                 new DrawableObject(TextureEnum.TEXTURE_WORMS.toString(), 64, 12, 20, 48)));
 
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.GET_TREE,
+                WorldItemsEnum.FOREST_TREE,
+                StringEnum.GET_TREE.toString(),
+                new DrawableObject(TextureEnum.TEXTURE_TREE.toString(), 172, 12, 45, 78)));
+
     }
 }

@@ -24,7 +24,9 @@ public enum TextureEnum {
     TEXTURE_BENCH_FIXED("graphics/bench_fixed.png"),
     TEXTURE_FOREST("graphics/bg_forest.png"),
     TEXTURE_WORMS("graphics/worms.png"),
-    TEXTURE_GAMEOVER("graphics/bg_gameover.png");
+    TEXTURE_GAMEOVER("graphics/bg_gameover.png"),
+    TEXTURE_TREE("graphics/forest_tree.png"),
+    TEXTURE_TREE_HOLE("graphics/tree_hole.png");
 
     private final String path;
 

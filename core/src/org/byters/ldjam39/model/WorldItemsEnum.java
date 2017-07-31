@@ -16,5 +16,8 @@ public enum WorldItemsEnum {
     FOREST_PORTAL,
     WORMS,
     POUND,
+    FOREST_TREE,
+    TREE_IN_OUTDOOR,
+    TREE_HOLE_IN_OUTDOOR,
     HOME_DOOR
 }
