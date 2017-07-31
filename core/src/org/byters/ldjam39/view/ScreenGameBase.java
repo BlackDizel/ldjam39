@@ -3,7 +3,6 @@ package org.byters.ldjam39.view;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.controller.ControllerCamera;
 import org.byters.engine.view.IScreen;
-import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.controller.InteractionLocation;
 import org.byters.ldjam39.controller.util.CollisionEnvironment;
 import org.byters.ldjam39.model.GameEnvironment;
@@ -88,8 +87,10 @@ public abstract class ScreenGameBase implements IScreen {
 
     @Override
     public void update() {
-        ControllerCamera.getInstance().setPosition(player.getOriginX(),
-                56, 0);
+        int halfCameraWidth = ControllerCamera.getInstance().getCameraWidth() / 2;
+        float x = Math.min(Math.max(player.getOriginX(), halfCameraWidth), getLocationInfo().getRightBoundPositionX() - halfCameraWidth);
+        ControllerCamera.getInstance().setPosition(x,
+                ControllerCamera.getInstance().getCameraHeight() / 2, 0);
 
         getLocationInfo().updateInteractMessage(player.getOriginX());
         interactionLocation.checkInteraction();
