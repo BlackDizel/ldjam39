@@ -1,4 +1,4 @@
-package org.byters.ldjam39.view.util;
+package org.byters.ldjam39.view.input;
 
 import com.badlogic.gdx.Input;
 
