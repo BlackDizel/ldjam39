@@ -10,30 +10,28 @@ import org.byters.engine.controller.ControllerMain;
 import org.byters.ldjam39.model.Player;
 import org.byters.ldjam39.view.TextureEnum;
 
-import java.lang.ref.WeakReference;
-
 public class DrawerPlayer {
 
     private static final int FRAMES_NUM_MOVE = 4;
     private static final float FRAME_DURATION_SECONDS = 0.2f;
-    private WeakReference<Player> wPlayer;
+    private Player wPlayer;
     private Texture tPlayer;
     private Animation<TextureRegion> aPlayer;
     private Vector2 direction;
 
     public DrawerPlayer(Player player) {
-        this.wPlayer = new WeakReference<Player>(player);
+        this.wPlayer = player;
     }
 
     public void draw(SpriteBatch batch) {
-        if (wPlayer.get() == null) return;
+        if (wPlayer == null) return;
 
         TextureRegion texture = getCurrentFrame();
         batch.draw(texture,
-                wPlayer.get().getX(), wPlayer.get().getY()
+                wPlayer.getX(), wPlayer.getY()
                 , 0, 0,
                 texture.getRegionWidth(), texture.getRegionHeight()
-                , 1,1,
+                , 1, 1,
                 0
         );
 
@@ -41,7 +39,7 @@ public class DrawerPlayer {
 
     private TextureRegion getCurrentFrame() {
         TextureRegion result;
-        if (wPlayer.get().isWaiting())
+        if (wPlayer.isWaiting())
             result = aPlayer.getKeyFrame(0);
         else result = aPlayer.getKeyFrame(ControllerMain.getInstance().getGameTime() / 1000f);
         checkFlip(result);
@@ -49,7 +47,7 @@ public class DrawerPlayer {
     }
 
     private void checkFlip(TextureRegion textureRegion) {
-        wPlayer.get().getDirection(direction);
+        wPlayer.getDirection(direction);
         if (direction.x < 0 && !textureRegion.isFlipX()
                 || direction.x >= 0 && textureRegion.isFlipX())
             textureRegion.flip(true, false);
@@ -72,6 +70,7 @@ public class DrawerPlayer {
     }
 
     public void dispose() {
+        wPlayer = null;
         tPlayer.dispose();
     }
 }

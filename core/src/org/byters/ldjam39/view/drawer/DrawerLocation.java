@@ -10,12 +10,11 @@ import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.view.TextureEnum;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class DrawerLocation {
     private static final float MESSAGE_POSITION_Y = ControllerCamera.getInstance().getCameraHeight() - 2;
-    private WeakReference<LocationInfoBase> wLocationInfo;
+    private LocationInfoBase wLocationInfo;
 
     private Texture tBackground;
     private BitmapFont font;
@@ -25,23 +24,24 @@ public class DrawerLocation {
     private ArrayList<Texture> listInteractedObject;
 
     public DrawerLocation(LocationInfoBase locationInfo) {
-        wLocationInfo = new WeakReference<LocationInfoBase>(locationInfo);
+        wLocationInfo = locationInfo;
     }
 
     public void load() {
-        if (wLocationInfo.get() == null) return;
+        if (wLocationInfo == null) return;
         font = new BitmapFont(Gdx.files.internal(TextureEnum.TEXTURE_FONT.toString()));
         layout = new GlyphLayout();
-        tBackground = new Texture(wLocationInfo.get().getBackground());
+        tBackground = new Texture(wLocationInfo.getBackground());
 
         listInteractedObject = new ArrayList<Texture>();
-        for (int i = 0; i < wLocationInfo.get().getInteractedObjectsNum(); ++i) {
-            String tItem = wLocationInfo.get().getInteractedObjectTexturePath(i);
+        for (int i = 0; i < wLocationInfo.getInteractedObjectsNum(); ++i) {
+            String tItem = wLocationInfo.getInteractedObjectTexturePath(i);
             listInteractedObject.add(tItem == null || tItem.isEmpty() ? null : new Texture(tItem));
         }
     }
 
     public void dispose() {
+        wLocationInfo = null;
         tBackground.dispose();
         font.dispose();
         for (int i = 0; i < listInteractedObject.size(); ++i)
@@ -50,7 +50,7 @@ public class DrawerLocation {
     }
 
     public void draw(SpriteBatch batch) {
-        if (wLocationInfo.get() == null) return;
+        if (wLocationInfo == null) return;
         batch.draw(tBackground, 0, 1);
 
         drawItems(batch);
@@ -58,8 +58,8 @@ public class DrawerLocation {
     }
 
     private void drawStringInfo(SpriteBatch batch) {
-        if (wLocationInfo.get() == null) return;
-        String message = wLocationInfo.get().getMessage();
+        if (wLocationInfo == null) return;
+        String message = wLocationInfo.getMessage();
         if (message == null || message.isEmpty()) return;
 
         layout.setText(font, message);
@@ -70,16 +70,16 @@ public class DrawerLocation {
     }
 
     private void drawItems(SpriteBatch batch) {
-        if (wLocationInfo.get() == null) return;
+        if (wLocationInfo == null) return;
 
-        for (int i = 0; i < wLocationInfo.get().getInteractedObjectsNum(); ++i) {
-            if (!wLocationInfo.get().isDrawableObjectExist(i)) continue;
+        for (int i = 0; i < wLocationInfo.getInteractedObjectsNum(); ++i) {
+            if (!wLocationInfo.isDrawableObjectExist(i)) continue;
 
             Texture t = listInteractedObject.get(i);
             if (t == null) continue;
 
-            batch.draw(t, wLocationInfo.get().getInteractedObjectPositionX(i),
-                    wLocationInfo.get().getInteractedObjectPositionY(i));
+            batch.draw(t, wLocationInfo.getInteractedObjectPositionX(i),
+                    wLocationInfo.getInteractedObjectPositionY(i));
         }
     }
 }

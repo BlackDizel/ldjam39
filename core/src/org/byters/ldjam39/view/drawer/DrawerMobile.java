@@ -11,7 +11,6 @@ import org.byters.ldjam39.model.Mobile;
 import org.byters.ldjam39.model.TaskListEnum;
 import org.byters.ldjam39.view.TextureEnum;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class DrawerMobile {
@@ -19,26 +18,26 @@ public class DrawerMobile {
     private static final float POSITION_Y_SHOWN = 0;
     private static final float POSITION_Y = -72;
     private static final float MAX_BATTERY_WIDTH = 5;
-    private WeakReference<Mobile> wMobile;
+    private Mobile wMobile;
 
     private ArrayList<Texture> listTextureMobileTask;
     private ArrayList<Texture> listTextureMobilePhonebook;
     private ShapeRenderer shapeRenderer;
 
     public DrawerMobile(Mobile mobile) {
-        this.wMobile = new WeakReference<Mobile>(mobile);
+        this.wMobile = mobile;
 
     }
 
     public void draw(SpriteBatch batch) {
-        if (wMobile.get() == null) return;
+        if (wMobile == null) return;
 
-        Texture texture = wMobile.get().isCurrentScreenPhonebook()
-                ? listTextureMobilePhonebook.get(wMobile.get().getCurrentScreenIndex())
-                : listTextureMobileTask.get(wMobile.get().getCurrentScreenIndex());
+        Texture texture = wMobile.isCurrentScreenPhonebook()
+                ? listTextureMobilePhonebook.get(wMobile.getCurrentScreenIndex())
+                : listTextureMobileTask.get(wMobile.getCurrentScreenIndex());
 
         batch.draw(texture, ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X),
-                wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y);
+                wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y);
 
         drawShapes(batch);
     }
@@ -62,25 +61,25 @@ public class DrawerMobile {
         if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CAT_FOOD))
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 67,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 67,
                     2, 2);
 
         if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CATCH_FISH))
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 52,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 52,
                     2, 2);
 
         if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.FIX_BENCH))
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 37,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 37,
                     2, 2);
 
         if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.PLANT_TREE))
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 28,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 28,
                     2, 2);
     }
 
@@ -90,7 +89,7 @@ public class DrawerMobile {
 
         setColor(shapeRenderer, width);
         shapeRenderer.rect(ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 47 + MAX_BATTERY_WIDTH - width),
-                (wMobile.get().isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 74,
+                (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 74,
                 width, 3);
 
     }
@@ -119,6 +118,7 @@ public class DrawerMobile {
     }
 
     public void dispose() {
+        wMobile = null;
         for (Texture item : listTextureMobileTask)
             item.dispose();
 

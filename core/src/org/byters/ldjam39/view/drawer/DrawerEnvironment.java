@@ -3,29 +3,27 @@ package org.byters.ldjam39.view.drawer;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.model.GameEnvironment;
 import org.byters.ldjam39.view.TextureEnum;
-
-import java.lang.ref.WeakReference;
 
 public class DrawerEnvironment {
 
     private Texture tBox;
-    private WeakReference<GameEnvironment> wEnvironment;
+    private GameEnvironment wEnvironment;
 
     public DrawerEnvironment(GameEnvironment environment) {
-        wEnvironment = new WeakReference<GameEnvironment>(environment);
+        wEnvironment = environment;
     }
 
     public void draw(SpriteBatch batch) {
-        if (wEnvironment.get() == null) return;
+        if (wEnvironment == null) return;
 
-        for (int i = 0; i < wEnvironment.get().getBoxNum();++i)
-            batch.draw(tBox, wEnvironment.get().getBoxX(i), wEnvironment.get().getBoxY(i));
+        for (int i = 0; i < wEnvironment.getBoxNum(); ++i)
+            batch.draw(tBox, wEnvironment.getBoxX(i), wEnvironment.getBoxY(i));
     }
 
     public void dispose() {
+        wEnvironment = null;
         tBox.dispose();
     }
 
