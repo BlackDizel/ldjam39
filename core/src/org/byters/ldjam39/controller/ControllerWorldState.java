@@ -5,6 +5,7 @@ import org.byters.ldjam39.model.WorldItemsEnum;
 import org.byters.ldjam39.model.state.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerWorldState {
 
@@ -196,7 +197,7 @@ public class ControllerWorldState {
         return ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).isTaskCompleted(task);
     }
 
-    void setMessageDialog(ArrayList<String> message) {
+    void setMessageDialog(List<String> message) {
         ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).setMessage(message);
     }
 

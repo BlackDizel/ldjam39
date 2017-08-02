@@ -1,12 +1,12 @@
 package org.byters.ldjam39.model.state;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class DialogState extends ObjectStateBase {
     private static final long NO_VALUE = 0;
     private static final long TIME_SHOW = 700;
     private long timeStartMillis;
-    private ArrayList<String> message;
+    private List<String> message;
     private int currentItemPos;
 
     public DialogState() {
@@ -21,7 +21,7 @@ public class DialogState extends ObjectStateBase {
     }
 
     public String getMessage() {
-        if (timeStartMillis == NO_VALUE || message == null) return null;
+        if (timeStartMillis == NO_VALUE || message == null || message.size() == 0) return null;
 
         if (timeStartMillis + TIME_SHOW < System.currentTimeMillis()
                 && currentItemPos < message.size() - 1) {
@@ -32,7 +32,7 @@ public class DialogState extends ObjectStateBase {
         return message.get(currentItemPos);
     }
 
-    public void setMessage(ArrayList<String> message) {
+    public void setMessage(List<String> message) {
         this.timeStartMillis = System.currentTimeMillis();
         currentItemPos = 0;
         this.message = message;

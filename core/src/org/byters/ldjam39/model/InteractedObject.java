@@ -1,21 +1,28 @@
 package org.byters.ldjam39.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class InteractedObject {
     private final String message;
     private final DrawableObject drawableObject;
+    private final List<String> listMessageSuccess;
+    private final List<String> listMessageFail;
     private InteractEnum action;
     private WorldItemsEnum itemWorld;
-    private ArrayList<String> listMessageSuccess;
-    private ArrayList<String> listMessageFail;
+
+    public InteractedObject(InteractEnum idInteract,
+                            WorldItemsEnum itemWorld,
+                            String message,
+                            DrawableObject drawableObject) {
+        this(idInteract, itemWorld, message, drawableObject, null, null);
+    }
 
     public InteractedObject(InteractEnum idInteract,
                             WorldItemsEnum itemWorld,
                             String message,
                             DrawableObject drawableObject,
-                            ArrayList<String> listMessageSuccess,
-                            ArrayList<String> listMessageFail) {
+                            List<String> listMessageSuccess,
+                            List<String> listMessageFail) {
         this.message = message;
         this.itemWorld = itemWorld;
         this.drawableObject = drawableObject;
@@ -40,11 +47,11 @@ public class InteractedObject {
         return itemWorld;
     }
 
-    public ArrayList<String> getMessageSuccess() {
+    public List<String> getMessageSuccess() {
         return listMessageSuccess;
     }
 
-    public ArrayList<String> getMessageFault() {
+    public List<String> getMessageFault() {
         return listMessageFail;
     }
 }
