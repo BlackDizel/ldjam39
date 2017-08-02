@@ -3,6 +3,8 @@ package org.byters.ldjam39.model.locationInfo;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
+import java.util.Arrays;
+
 public class LocationInfoForest extends LocationInfoBase {
     @Override
     public String getBackground() {
@@ -28,13 +30,17 @@ public class LocationInfoForest extends LocationInfoBase {
                 InteractEnum.GET_WORMS,
                 WorldItemsEnum.WORMS,
                 StringEnum.GET_WORMS.toString(),
-                new DrawableObject(TextureEnum.TEXTURE_WORMS.toString(), 64, 12, 20, 48)));
+                new DrawableObject(TextureEnum.TEXTURE_WORMS.toString(), 64, 12, 20, 48),
+                Arrays.asList(StringEnum.SUCCESS_GET_WORMS.toString()),
+                Arrays.asList(StringEnum.FAIL_GET_WORMS.toString())));
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.GET_TREE,
                 WorldItemsEnum.FOREST_TREE,
                 StringEnum.GET_TREE.toString(),
-                new DrawableObject(TextureEnum.TEXTURE_TREE.toString(), 172, 12, 45, 78)));
+                new DrawableObject(TextureEnum.TEXTURE_TREE.toString(), 172, 12, 45, 78),
+                Arrays.asList(StringEnum.SUCCESS_GET_TREE.toString()),
+                Arrays.asList(StringEnum.FAIL_GET_TREE.toString())));
 
     }
 }

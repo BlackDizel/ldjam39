@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DialogState extends ObjectStateBase {
     private static final long NO_VALUE = 0;
-    private static final long TIME_SHOW = 700;
+    private static final long TIME_SHOW = 1100;
     private long timeStartMillis;
     private List<String> message;
     private int currentItemPos;
@@ -23,10 +23,14 @@ public class DialogState extends ObjectStateBase {
     public String getMessage() {
         if (timeStartMillis == NO_VALUE || message == null || message.size() == 0) return null;
 
-        if (timeStartMillis + TIME_SHOW < System.currentTimeMillis()
-                && currentItemPos < message.size() - 1) {
-            ++currentItemPos;
-            timeStartMillis = System.currentTimeMillis();
+        if (timeStartMillis + TIME_SHOW < System.currentTimeMillis()) {
+            if (currentItemPos < message.size() - 1) {
+                ++currentItemPos;
+                timeStartMillis = System.currentTimeMillis();
+            } else {
+                message = null;
+                return null;
+            }
         }
 
         return message.get(currentItemPos);

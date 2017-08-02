@@ -3,6 +3,8 @@ package org.byters.ldjam39.model.locationInfo;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
+import java.util.Arrays;
+
 public class LocationInfoMarket extends LocationInfoBase {
     @Override
     public String getBackground() {
@@ -28,13 +30,17 @@ public class LocationInfoMarket extends LocationInfoBase {
                 InteractEnum.GET_CAT_FOOD,
                 WorldItemsEnum.CAT_FOOD_IN_MARKET,
                 StringEnum.GET_CAT_FOOD.toString(),
-                new DrawableObject(null, 34, 16, 30, 48)));
+                new DrawableObject(null, 34, 16, 30, 48),
+                Arrays.asList(StringEnum.SUCCESS_GET_CAT_FOOD.toString()),
+                Arrays.asList(StringEnum.FAIL_GET_CAT_FOOD.toString())));
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.BUY_CAT_FOOD,
                 WorldItemsEnum.SELLER,
                 StringEnum.BUY_CAT_FOOD.toString(),
-                new DrawableObject(null, 222, 16, 46, 48)));
+                new DrawableObject(null, 222, 16, 46, 48),
+                Arrays.asList(StringEnum.SUCCESS_BUY_CAT_FOOD.toString()),
+                null));
 
     }
 }

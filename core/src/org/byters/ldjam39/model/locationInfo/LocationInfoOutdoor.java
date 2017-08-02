@@ -3,6 +3,8 @@ package org.byters.ldjam39.model.locationInfo;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
+import java.util.Arrays;
+
 public class LocationInfoOutdoor extends LocationInfoBase {
 
     @Override
@@ -34,13 +36,17 @@ public class LocationInfoOutdoor extends LocationInfoBase {
                 InteractEnum.GET_SHOVEL,
                 WorldItemsEnum.SHOVEL,
                 StringEnum.GET_SHOVEL.toString(),
-                new DrawableObject(TextureEnum.TEXTURE_SHOVEL.toString(), 72, 16, 12, 36)));
+                new DrawableObject(TextureEnum.TEXTURE_SHOVEL.toString(), 72, 16, 12, 36),
+                Arrays.asList(StringEnum.SUCCESS_GET_SHOVEL.toString()),
+                null));
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.FIX_BENCH,
                 WorldItemsEnum.BENCH_BROKEN,
                 StringEnum.FIX_BENCH.toString(),
-                new DrawableObject(TextureEnum.TEXTURE_BENCH_BROKEN.toString(), 86, 12, 38, 26)));
+                new DrawableObject(TextureEnum.TEXTURE_BENCH_BROKEN.toString(), 86, 12, 38, 26),
+                Arrays.asList(StringEnum.SUCCESS_FIX_BENCH_1.toString(),StringEnum.SUCCESS_FIX_BENCH_2.toString()),
+                Arrays.asList(StringEnum.FAIL_FIX_BENCH.toString())));
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.NONE,
@@ -52,7 +58,9 @@ public class LocationInfoOutdoor extends LocationInfoBase {
                 InteractEnum.PLANT_TREE,
                 WorldItemsEnum.TREE_HOLE_IN_OUTDOOR,
                 StringEnum.PLAT_TREE.toString(),
-                new DrawableObject(TextureEnum.TEXTURE_TREE_HOLE.toString(), 32, 8, 38, 26)));
+                new DrawableObject(TextureEnum.TEXTURE_TREE_HOLE.toString(), 32, 8, 38, 26),
+                Arrays.asList(StringEnum.SUCCESS_PLANT_TREE_1.toString(),StringEnum.SUCCESS_PLANT_TREE_2.toString()),
+                Arrays.asList(StringEnum.FAIL_PLANT_TREE.toString())));
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.NONE,
