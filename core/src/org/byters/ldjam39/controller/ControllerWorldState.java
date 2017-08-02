@@ -27,30 +27,37 @@ public class ControllerWorldState {
         data.add(new InventoryState());
         data.add(new MobileBatteryState());
         data.add(new TaskListState());
+        data.add(new DialogState());
     }
 
-    void addToInventory(WorldItemsEnum item) {
+    boolean addToInventory(WorldItemsEnum item) {
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
 
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
-        if (world.tryGetItem(item))
+        if (world.tryGetItem(item)) {
             inventory.add(item);
+            return true;
+        }
+
+        return false;
     }
 
-    void getWorms() {
+    boolean getWorms() {
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
 
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (world.isContainsItem(WorldItemsEnum.WORMS)
                 && !inventory.isContains(WorldItemsEnum.WORMS)
                 && inventory.isContains(WorldItemsEnum.SHOVEL)) {
             inventory.add(WorldItemsEnum.WORMS);
             world.removeItem(WorldItemsEnum.WORMS);
+            return true;
         }
+        return false;
     }
 
     private ObjectStateBase getData(ObjectStateEnum id) {
@@ -60,63 +67,75 @@ public class ControllerWorldState {
         return null;
     }
 
-    public void fixBench() {
+    boolean fixBench() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (inventory.isContains(WorldItemsEnum.HAMMER) && world.isBenchBroken()) {
             world.fixBench();
             ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.FIX_BENCH);
+            return true;
         }
+        return false;
     }
 
-    public void plantTree() {
+    boolean plantTree() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (inventory.isContains(WorldItemsEnum.FOREST_TREE)
                 && world.isContainsItem(WorldItemsEnum.TREE_HOLE_IN_OUTDOOR)) {
             world.plantTree();
             inventory.removeItem(WorldItemsEnum.FOREST_TREE);
             ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.PLANT_TREE);
+            return true;
         }
+        return false;
     }
 
-    public void getTree() {
+    boolean getTree() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (inventory.isContains(WorldItemsEnum.SHOVEL)
                 && !inventory.isContains(WorldItemsEnum.FOREST_TREE)) {
             world.removeItem(WorldItemsEnum.FOREST_TREE);
             inventory.add(WorldItemsEnum.FOREST_TREE);
+            return true;
         }
+
+        return false;
     }
 
-    public void catchFish() {
+    boolean catchFish() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (inventory.isContains(WorldItemsEnum.WORMS)
                 && inventory.isContains(WorldItemsEnum.FISHING_ROD)) {
             world.removeItem(WorldItemsEnum.POUND);
             ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.CATCH_FISH);
+            return true;
         }
+
+        return false;
     }
 
-    void fillCatDish() {
+    boolean fillCatDish() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (inventory.getItem(WorldItemsEnum.CAT_FOOD_IN_MARKET)) {
             world.fillCatDish();
             ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.CAT_FOOD);
+            return true;
         }
+        return false;
     }
 
     public boolean isWorldContains(WorldItemsEnum item) {
@@ -125,32 +144,36 @@ public class ControllerWorldState {
         return world.isContainsItem(item);
     }
 
-    void buyCatFood() {
+    boolean buyCatFood() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
-        if (!inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET)) return;
+        if (world == null || inventory == null) return false;
+        if (!inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET)) return false;
 
         if (inventory.isContains(WorldItemsEnum.MONEY)) {
             world.removeItem(WorldItemsEnum.SELLER);
             world.addItem(WorldItemsEnum.MARKET_DOOR);
+            return true;
         }
+        return false;
     }
 
-    void getCatFood() {
+    boolean getCatFood() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
-        if (world == null || inventory == null) return;
+        if (world == null || inventory == null) return false;
 
         if (!inventory.isContains(WorldItemsEnum.MONEY)
                 || inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET))
-            return;
+            return false;
 
         if (world.tryGetItem(WorldItemsEnum.CAT_FOOD_IN_MARKET)) {
             inventory.add(WorldItemsEnum.CAT_FOOD_IN_MARKET);
             world.addItem(WorldItemsEnum.SELLER);
             world.removeItem(WorldItemsEnum.MARKET_DOOR);
+            return true;
         }
+        return false;
     }
 
     public void startTimer() {
@@ -171,5 +194,13 @@ public class ControllerWorldState {
 
     public boolean isTaskCompleted(TaskListEnum task) {
         return ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).isTaskCompleted(task);
+    }
+
+    void setMessageDialog(ArrayList<String> message) {
+        ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).setMessage(message);
+    }
+
+    public String getMessageDialog() {
+        return ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).getMessage();
     }
 }
