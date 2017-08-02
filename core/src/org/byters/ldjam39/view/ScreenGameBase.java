@@ -13,10 +13,7 @@ import org.byters.ldjam39.model.GameEnvironment;
 import org.byters.ldjam39.model.Mobile;
 import org.byters.ldjam39.model.Player;
 import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
-import org.byters.ldjam39.view.drawer.DrawerEnvironment;
-import org.byters.ldjam39.view.drawer.DrawerLocation;
-import org.byters.ldjam39.view.drawer.DrawerMobile;
-import org.byters.ldjam39.view.drawer.DrawerPlayer;
+import org.byters.ldjam39.view.drawer.*;
 import org.byters.ldjam39.view.input.InputInteraction;
 import org.byters.ldjam39.view.input.InputMobile;
 import org.byters.ldjam39.view.input.InputPlayer;
@@ -38,6 +35,7 @@ public abstract class ScreenGameBase implements IScreen {
     private InputInteraction inputInteraction;
     private InputPlayer inputPlayer;
     private InteractionLocation interactionLocation;
+    private DrawerDialogs drawerDialogs;
 
     ScreenGameBase(int playerInitX, int playerInitY) {
         this.playerPosInitX = playerInitX;
@@ -61,6 +59,7 @@ public abstract class ScreenGameBase implements IScreen {
         drawerLocation.draw(batch);
         drawerEnvironment.draw(batch);
         drawerPlayer.draw(batch);
+        drawerDialogs.draw(batch);
         drawerMobile.draw(batch);
     }
 
@@ -95,6 +94,9 @@ public abstract class ScreenGameBase implements IScreen {
 
         inputInteraction = new InputInteraction(getLocationInfo());
         /*endregion*/
+
+        drawerDialogs = new DrawerDialogs(player);
+        drawerDialogs.load();
 
         interactionLocation = new InteractionLocation(getLocationInfo());
     }
@@ -133,5 +135,6 @@ public abstract class ScreenGameBase implements IScreen {
         drawerEnvironment.dispose();
         drawerMobile.dispose();
         drawerLocation.dispose();
+        drawerDialogs.dispose();
     }
 }
