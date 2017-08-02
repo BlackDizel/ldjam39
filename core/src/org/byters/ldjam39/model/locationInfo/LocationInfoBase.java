@@ -75,4 +75,8 @@ public abstract class LocationInfoBase {
     public InteractedObject getInteractedObject() {
         return interactedObject;
     }
+
+    public void resetInteractedItem() {
+        interactedObject = null;
+    }
 }
