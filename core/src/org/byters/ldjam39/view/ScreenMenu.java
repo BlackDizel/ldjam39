@@ -37,7 +37,7 @@ public class ScreenMenu implements IScreen {
 
         if (!Gdx.input.justTouched()) return;
 
-        if (InputHelper.isContainsPointer(74, 54, 46, 12)) {
+        if (InputHelper.isContainsPointer(74, 32, 46, 12)) {
             ControllerWorldState.getInstance().startTimer();
             {
                 ScreenGameBase.loadMusic();
@@ -45,7 +45,7 @@ public class ScreenMenu implements IScreen {
             }
         }
 
-        if (InputHelper.isContainsPointer(74, 32, 46, 12))
+        if (InputHelper.isContainsPointer(74, 18, 46, 12))
             Gdx.app.exit();
     }
 
