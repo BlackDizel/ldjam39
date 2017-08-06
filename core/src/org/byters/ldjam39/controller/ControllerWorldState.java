@@ -1,5 +1,6 @@
 package org.byters.ldjam39.controller;
 
+import org.byters.ldjam39.model.DialogMessage;
 import org.byters.ldjam39.model.TaskListEnum;
 import org.byters.ldjam39.model.WorldItemsEnum;
 import org.byters.ldjam39.model.state.*;
@@ -197,11 +198,19 @@ public class ControllerWorldState {
         return ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).isTaskCompleted(task);
     }
 
-    void setMessageDialog(List<String> message) {
-        ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).setMessage(message);
+    void setMessageDialogPlayer(List<String> message) {
+        ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).setMessagePlayer(message);
     }
 
-    public String getMessageDialog() {
-        return ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).getMessage();
+    public void setMessagesDialog(List<DialogMessage> message) {
+        ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).setMessages(message);
+    }
+
+    public DialogMessage getMessageDialog() {
+        return ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).getCurrentMessage();
+    }
+
+    public void resetDialogs(){
+        getData(ObjectStateEnum.DIALOG_STATE).reset();
     }
 }

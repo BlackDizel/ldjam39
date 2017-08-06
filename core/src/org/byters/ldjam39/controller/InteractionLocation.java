@@ -99,7 +99,7 @@ public class InteractionLocation {
         }
 
         if (needToShow)
-            ControllerWorldState.getInstance().setMessageDialog(success ? itemInteracted.getMessageSuccess() : itemInteracted.getMessageFault());
+            ControllerWorldState.getInstance().setMessageDialogPlayer(success ? itemInteracted.getMessageSuccess() : itemInteracted.getMessageFault());
         wLocationInfo.resetInteractedItem();
     }
 }

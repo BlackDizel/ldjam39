@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.ldjam39.controller.ControllerWorldState;
+import org.byters.ldjam39.model.DialogMessage;
 import org.byters.ldjam39.model.Player;
 import org.byters.ldjam39.view.TextureEnum;
 
@@ -19,13 +20,17 @@ public class DrawerDialogs {
     }
 
     public void draw(SpriteBatch batch) {
-        String message = ControllerWorldState.getInstance().getMessageDialog();
-        if (message == null || message.isEmpty())
+        DialogMessage message = ControllerWorldState.getInstance().getMessageDialog();
+        if (message == null
+                || message.getMessage() == null
+                || message.getMessage().isEmpty())
             return;
 
-        layout.setText(font, message);
-        font.draw(batch, layout, wPlayer.getOriginX() - layout.width / 2,
-                wPlayer.getY() + wPlayer.getHeight() + 8);
+        float x = message.isPlayer() ? wPlayer.getOriginX() - layout.width / 2 : message.getX();
+        float y = message.isPlayer() ? wPlayer.getY() + wPlayer.getHeight() + 8 : message.getY();
+
+        layout.setText(font, message.getMessage());
+        font.draw(batch, layout, x, y);
     }
 
     public void dispose() {
