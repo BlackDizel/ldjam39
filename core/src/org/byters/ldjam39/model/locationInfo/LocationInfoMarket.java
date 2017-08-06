@@ -1,9 +1,12 @@
 package org.byters.ldjam39.model.locationInfo;
 
+import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class LocationInfoMarket extends LocationInfoBase {
     @Override
@@ -19,6 +22,11 @@ public class LocationInfoMarket extends LocationInfoBase {
     @Override
     public void load() {
         super.load();
+
+        ControllerWorldState.getInstance().resetDialogs();
+        List<DialogMessage> listWelcome = new ArrayList<DialogMessage>();
+        listWelcome.add(DialogMessage.newInstance(StringEnum.MARKET_WELCOME.toString(), 224, 68, 1100));
+        ControllerWorldState.getInstance().setMessagesDialog(listWelcome);
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.RETURN_TO_PARK_FROM_MARKET,
@@ -42,5 +50,11 @@ public class LocationInfoMarket extends LocationInfoBase {
                 Arrays.asList(StringEnum.SUCCESS_BUY_CAT_FOOD.toString()),
                 null));
 
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        ControllerWorldState.getInstance().resetDialogs();
     }
 }

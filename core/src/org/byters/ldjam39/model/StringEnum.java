@@ -40,7 +40,8 @@ public enum StringEnum {
     SUCCESS_PLANT_TREE_1("Now I have"),
     SUCCESS_PLANT_TREE_2("a piece of wood"),
     SUCCESS_CATCH_FISH("Fish, smile!"),
-    FAIL_CATCH_FISH("The pond");
+    FAIL_CATCH_FISH("The pond"),
+    MARKET_WELCOME("Welcome, sir");
 
     private String title;
 
