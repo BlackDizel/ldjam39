@@ -29,7 +29,8 @@ public enum TextureEnum {
     TEXTURE_TREE_HOLE("graphics/tree_hole.png"),
     FILE_MUSIC("music.mp3"),
     TEXTURE_WIN("graphics/bg_win.png"),
-    TEXTURE_MENU("graphics/menu.png");
+    TEXTURE_MENU("graphics/menu.png"),
+    TEXTURE_BACKGROUND_SKY("graphics/bg_sky.png");
 
     private final String path;
 

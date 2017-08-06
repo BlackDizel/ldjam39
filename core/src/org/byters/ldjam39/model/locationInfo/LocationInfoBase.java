@@ -1,5 +1,6 @@
 package org.byters.ldjam39.model.locationInfo;
 
+import com.badlogic.gdx.Gdx;
 import org.byters.engine.model.util.HelperMath;
 import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.InteractedObject;
@@ -9,12 +10,16 @@ import java.util.ArrayList;
 
 public abstract class LocationInfoBase {
 
-    static final float DISTANCE_INTERACT = 12;
+    private static final float DISTANCE_INTERACT = 12;
+    private static final int SKY_WIDTH = 725;
+    private static final float CLOUD_SPEED = 0.5f;
     ArrayList<InteractedObject> listInteractedObject;
+    private float skyPosX;
     private InteractedObject interactedObject;
     private InteractedObject nearestObject;
 
     public void load() {
+        skyPosX = 0;
         interactedObject = null;
         nearestObject = null;
         listInteractedObject = new ArrayList<InteractedObject>();
@@ -78,5 +83,22 @@ public abstract class LocationInfoBase {
 
     public void resetInteractedItem() {
         interactedObject = null;
+    }
+
+    public void update() {
+        skyPosX -= Gdx.graphics.getDeltaTime() * CLOUD_SPEED;
+        if (skyPosX < -SKY_WIDTH) skyPosX = 0;
+    }
+
+    public float getSkyPosXFirst() {
+        return skyPosX;
+    }
+
+    public float getSkyPosXSecond() {
+        return skyPosX + SKY_WIDTH;
+    }
+
+    public float getSkyPosY() {
+        return 25;
     }
 }

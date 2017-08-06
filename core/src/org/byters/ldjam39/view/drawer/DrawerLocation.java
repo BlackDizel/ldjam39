@@ -17,6 +17,7 @@ public class DrawerLocation {
     private LocationInfoBase wLocationInfo;
 
     private Texture tBackground;
+    private Texture tBackgroundSky;
     private BitmapFont font;
 
     private GlyphLayout layout;
@@ -32,6 +33,7 @@ public class DrawerLocation {
         font = new BitmapFont(Gdx.files.internal(TextureEnum.TEXTURE_FONT.toString()));
         layout = new GlyphLayout();
         tBackground = new Texture(wLocationInfo.getBackground());
+        tBackgroundSky = new Texture(TextureEnum.TEXTURE_BACKGROUND_SKY.toString());
 
         listInteractedObject = new ArrayList<Texture>();
         for (int i = 0; i < wLocationInfo.getInteractedObjectsNum(); ++i) {
@@ -43,6 +45,7 @@ public class DrawerLocation {
     public void dispose() {
         wLocationInfo = null;
         tBackground.dispose();
+        tBackgroundSky.dispose();
         font.dispose();
         for (int i = 0; i < listInteractedObject.size(); ++i)
             if (listInteractedObject.get(i) != null)
@@ -51,6 +54,8 @@ public class DrawerLocation {
 
     public void draw(SpriteBatch batch) {
         if (wLocationInfo == null) return;
+        batch.draw(tBackgroundSky, wLocationInfo.getSkyPosXFirst(), wLocationInfo.getSkyPosY());
+        batch.draw(tBackgroundSky, wLocationInfo.getSkyPosXSecond(),wLocationInfo.getSkyPosY());
         batch.draw(tBackground, 0, 1);
 
         drawItems(batch);
