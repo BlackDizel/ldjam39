@@ -25,6 +25,9 @@ public abstract class LocationInfoBase {
         listInteractedObject = new ArrayList<InteractedObject>();
     }
 
+    public void dispose() {
+    }
+
     public int getInteractedObjectsNum() {
         return listInteractedObject == null ? 0 : listInteractedObject.size();
     }

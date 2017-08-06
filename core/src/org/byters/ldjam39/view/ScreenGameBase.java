@@ -137,5 +137,6 @@ public abstract class ScreenGameBase implements IScreen {
         drawerMobile.dispose();
         drawerLocation.dispose();
         drawerDialogs.dispose();
+        getLocationInfo().dispose();
     }
 }
