@@ -41,7 +41,8 @@ public enum StringEnum {
     SUCCESS_PLANT_TREE_2("a piece of wood"),
     SUCCESS_CATCH_FISH("Fish, smile!"),
     FAIL_CATCH_FISH("The pond"),
-    MARKET_WELCOME("Welcome, sir");
+    MARKET_WELCOME("Welcome, sir"),
+    CLOSE_IMAGE_MODAL("Press ESC to close image");
 
     private String title;
 
