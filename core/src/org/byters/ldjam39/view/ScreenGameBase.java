@@ -16,6 +16,7 @@ import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.view.drawer.*;
 import org.byters.ldjam39.view.input.InputInteraction;
 import org.byters.ldjam39.view.input.InputMobile;
+import org.byters.ldjam39.view.input.InputModalImage;
 import org.byters.ldjam39.view.input.InputPlayer;
 
 public abstract class ScreenGameBase implements IScreen {
@@ -26,16 +27,22 @@ public abstract class ScreenGameBase implements IScreen {
     private Player player;
     private GameEnvironment environment;
     private Mobile mobile;
+
     private DrawerMobile drawerMobile;
     private DrawerEnvironment drawerEnvironment;
     private DrawerLocation drawerLocation;
     private DrawerPlayer drawerPlayer;
+    private DrawerDialogs drawerDialogs;
+    private DrawerModalImage drawerModalImage;
+
     private CollisionEnvironment collisionEnvironment;
+
     private InputMobile inputMobile;
     private InputInteraction inputInteraction;
     private InputPlayer inputPlayer;
+    private InputModalImage inputModalImage;
+
     private InteractionLocation interactionLocation;
-    private DrawerDialogs drawerDialogs;
 
     ScreenGameBase(int playerInitX, int playerInitY) {
         this.playerPosInitX = playerInitX;
@@ -61,6 +68,7 @@ public abstract class ScreenGameBase implements IScreen {
         drawerPlayer.draw(batch);
         drawerDialogs.draw(batch);
         drawerMobile.draw(batch);
+        drawerModalImage.draw(batch);
     }
 
     @Override
@@ -84,6 +92,9 @@ public abstract class ScreenGameBase implements IScreen {
 
         drawerLocation = new DrawerLocation(getLocationInfo());
         drawerLocation.load();
+
+        drawerModalImage = new DrawerModalImage(getLocationInfo().getImagesModal(), player);
+        drawerModalImage.load();
         /*endregion*/
 
         /*region input*/
@@ -93,6 +104,8 @@ public abstract class ScreenGameBase implements IScreen {
         inputPlayer.setCollisionEnvironment(collisionEnvironment);
 
         inputInteraction = new InputInteraction(getLocationInfo());
+
+        inputModalImage = new InputModalImage(getLocationInfo().getImagesModal());
         /*endregion*/
 
         drawerDialogs = new DrawerDialogs(player);
@@ -125,6 +138,10 @@ public abstract class ScreenGameBase implements IScreen {
 
     @Override
     public void input() {
+        inputModalImage.input();
+        if (inputModalImage.isBlockInput())
+            return;
+
         inputPlayer.input();
         inputMobile.input();
         inputInteraction.input();
@@ -137,6 +154,7 @@ public abstract class ScreenGameBase implements IScreen {
         drawerMobile.dispose();
         drawerLocation.dispose();
         drawerDialogs.dispose();
+        drawerModalImage.dispose();
         getLocationInfo().dispose();
     }
 }

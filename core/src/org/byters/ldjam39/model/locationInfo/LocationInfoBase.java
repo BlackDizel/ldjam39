@@ -17,6 +17,7 @@ public abstract class LocationInfoBase {
     private float skyPosX;
     private InteractedObject interactedObject;
     private InteractedObject nearestObject;
+    LocationInfoModalImageInfo imagesModal;
 
     public void load() {
         skyPosX = 0;
@@ -103,5 +104,9 @@ public abstract class LocationInfoBase {
 
     public float getSkyPosY() {
         return 25;
+    }
+
+    public LocationInfoModalImageInfo getImagesModal() {
+        return imagesModal;
     }
 }
