@@ -120,6 +120,7 @@ public class ControllerWorldState {
         if (inventory.isContains(WorldItemsEnum.WORMS)
                 && inventory.isContains(WorldItemsEnum.FISHING_ROD)) {
             world.removeItem(WorldItemsEnum.POUND);
+            world.addItem(WorldItemsEnum.MODAL_IMAGE_SELFIE_SHOW);
             ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.CATCH_FISH);
             return true;
         }
@@ -210,7 +211,13 @@ public class ControllerWorldState {
         return ((DialogState) getData(ObjectStateEnum.DIALOG_STATE)).getCurrentMessage();
     }
 
-    public void resetDialogs(){
+    public void resetDialogs() {
         getData(ObjectStateEnum.DIALOG_STATE).reset();
+    }
+
+    public void removeWorldItem(WorldItemsEnum item) {
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null) return;
+        world.removeItem(item);
     }
 }

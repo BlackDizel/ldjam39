@@ -30,7 +30,8 @@ public enum TextureEnum {
     FILE_MUSIC("music.mp3"),
     TEXTURE_WIN("graphics/bg_win.png"),
     TEXTURE_MENU("graphics/menu.png"),
-    TEXTURE_BACKGROUND_SKY("graphics/bg_sky.png");
+    TEXTURE_BACKGROUND_SKY("graphics/bg_sky.png"),
+    TEXTURE_MODAL_IMAGE_SELFIE("graphics/selfie.png");
 
     private final String path;
 

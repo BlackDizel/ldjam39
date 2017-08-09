@@ -3,6 +3,7 @@ package org.byters.ldjam39.model.locationInfo;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LocationInfoPark extends LocationInfoBase {
@@ -45,5 +46,15 @@ public class LocationInfoPark extends LocationInfoBase {
                 new DrawableObject(null, 550, 18, 30, 48),
                 Arrays.asList(StringEnum.SUCCESS_CATCH_FISH.toString()),
                 Arrays.asList(StringEnum.FAIL_CATCH_FISH.toString())));
+
+
+        ArrayList<ModalImageInfo> listImageModal = new ArrayList<ModalImageInfo>();
+        listImageModal.add(new ModalImageInfo(
+                WorldItemsEnum.MODAL_IMAGE_SELFIE_AVAILABLE,
+                WorldItemsEnum.MODAL_IMAGE_SELFIE_SHOW,
+                TextureEnum.TEXTURE_MODAL_IMAGE_SELFIE));
+
+        imagesModal = new LocationInfoModalImageInfo(listImageModal);
+
     }
 }
