@@ -1,6 +1,7 @@
 package org.byters.ldjam39.controller;
 
 import org.byters.ldjam39.model.DialogMessage;
+import org.byters.ldjam39.model.StringEnum;
 import org.byters.ldjam39.model.TaskListEnum;
 import org.byters.ldjam39.model.WorldItemsEnum;
 import org.byters.ldjam39.model.state.*;
@@ -147,15 +148,43 @@ public class ControllerWorldState {
         return world.isContainsItem(item);
     }
 
-    boolean buyCatFood() {
+    boolean buyInMarket() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
         if (world == null || inventory == null) return false;
-        if (!inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET)) return false;
+
+        if (!(inventory.isContains(WorldItemsEnum.CAT_FOOD_IN_MARKET)
+                || inventory.isContains(WorldItemsEnum.FLOWERS_IN_MARKET)))
+            return false;
 
         if (inventory.isContains(WorldItemsEnum.MONEY)) {
             world.removeItem(WorldItemsEnum.SELLER);
             world.addItem(WorldItemsEnum.MARKET_DOOR);
+
+            ControllerWorldState.getInstance().resetDialogs();
+            List<DialogMessage> listMessages = new ArrayList<DialogMessage>();
+            listMessages.add(DialogMessage.newInstance(StringEnum.SUCCESS_BUY.toString(), 192, 68, 1100));
+            ControllerWorldState.getInstance().setMessagesDialog(listMessages);
+
+            return true;
+        }
+        return false;
+    }
+
+    boolean getFlowers() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return false;
+
+        if (!inventory.isContains(WorldItemsEnum.MONEY)
+                || inventory.isContains(WorldItemsEnum.FLOWERS_IN_MARKET))
+            return false;
+
+        if (world.tryGetItem(WorldItemsEnum.FLOWERS_IN_MARKET)) {
+            inventory.add(WorldItemsEnum.FLOWERS_IN_MARKET);
+            if (!world.isContainsItem(WorldItemsEnum.SELLER))
+                world.addItem(WorldItemsEnum.SELLER);
+            world.removeItem(WorldItemsEnum.MARKET_DOOR);
             return true;
         }
         return false;
@@ -172,7 +201,8 @@ public class ControllerWorldState {
 
         if (world.tryGetItem(WorldItemsEnum.CAT_FOOD_IN_MARKET)) {
             inventory.add(WorldItemsEnum.CAT_FOOD_IN_MARKET);
-            world.addItem(WorldItemsEnum.SELLER);
+            if (!world.isContainsItem(WorldItemsEnum.SELLER))
+                world.addItem(WorldItemsEnum.SELLER);
             world.removeItem(WorldItemsEnum.MARKET_DOOR);
             return true;
         }

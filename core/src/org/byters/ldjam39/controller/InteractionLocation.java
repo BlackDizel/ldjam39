@@ -51,12 +51,17 @@ public class InteractionLocation {
             case FILL_CAT_DISH:
                 success = ControllerWorldState.getInstance().fillCatDish();
                 break;
-            case BUY_CAT_FOOD:
-                success = ControllerWorldState.getInstance().buyCatFood();
+            case BUY_IN_MARKET:
+                needToShow = false;
+                success = ControllerWorldState.getInstance().buyInMarket();
                 break;
             case GET_CAT_FOOD:
                 success = ControllerWorldState.getInstance().getCatFood();
                 break;
+            case GET_FLOWERS:
+                success = ControllerWorldState.getInstance().getFlowers();
+                break;
+
             case FIX_BENCH:
                 success = ControllerWorldState.getInstance().fixBench();
                 break;

@@ -11,7 +11,7 @@ public enum InteractEnum {
     RETURN_TO_OUTDOOR,
     RETURN_TO_PARK_FROM_MARKET,
     GET_CAT_FOOD,
-    BUY_CAT_FOOD,
+    BUY_IN_MARKET,
     FILL_CAT_DISH,
     GET_SHOVEL,
     FIX_BENCH,
@@ -21,5 +21,6 @@ public enum InteractEnum {
     CATCH_FISH,
     GET_TREE,
     PLANT_TREE,
+    GET_FLOWERS,
     NONE
 }

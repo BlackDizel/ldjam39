@@ -43,13 +43,20 @@ public class LocationInfoMarket extends LocationInfoBase {
                 Arrays.asList(StringEnum.FAIL_GET_CAT_FOOD.toString())));
 
         listInteractedObject.add(new InteractedObject(
-                InteractEnum.BUY_CAT_FOOD,
+                InteractEnum.BUY_IN_MARKET,
                 WorldItemsEnum.SELLER,
-                StringEnum.BUY_CAT_FOOD.toString(),
+                StringEnum.BUY.toString(),
                 new DrawableObject(null, 222, 16, 46, 48),
-                Arrays.asList(StringEnum.SUCCESS_BUY_CAT_FOOD.toString()),
+                null,
                 null));
 
+        listInteractedObject.add(new InteractedObject(
+                InteractEnum.GET_FLOWERS,
+                WorldItemsEnum.FLOWERS_IN_MARKET,
+                StringEnum.GET_FLOWERS.toString(),
+                new DrawableObject(null, 294, 16, 36, 48),
+                Arrays.asList(StringEnum.SUCCESS_GET_FLOWERS.toString()),
+                Arrays.asList(StringEnum.FAIL_GET_FLOWERS.toString())));
     }
 
     @Override
