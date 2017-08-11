@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.controller.ControllerCamera;
 import org.byters.ldjam39.controller.ControllerWorld;
+import org.byters.ldjam39.model.Mobile;
 import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
 import org.byters.ldjam39.view.TextureEnum;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class DrawerLocation {
     private static final float MESSAGE_POSITION_Y = ControllerCamera.getInstance().getCameraHeight() - 2;
     private LocationInfoBase wLocationInfo;
+    private Mobile mobile;
 
     private Texture tBackground;
     private Texture tBackgroundSky;
@@ -24,8 +26,9 @@ public class DrawerLocation {
 
     private ArrayList<Texture> listInteractedObject;
 
-    public DrawerLocation(LocationInfoBase locationInfo) {
+    public DrawerLocation(LocationInfoBase locationInfo, Mobile mobile) {
         wLocationInfo = locationInfo;
+        this.mobile = mobile;
     }
 
     public void load() {
@@ -55,7 +58,7 @@ public class DrawerLocation {
     public void draw(SpriteBatch batch) {
         if (wLocationInfo == null) return;
         batch.draw(tBackgroundSky, wLocationInfo.getSkyPosXFirst(), wLocationInfo.getSkyPosY());
-        batch.draw(tBackgroundSky, wLocationInfo.getSkyPosXSecond(),wLocationInfo.getSkyPosY());
+        batch.draw(tBackgroundSky, wLocationInfo.getSkyPosXSecond(), wLocationInfo.getSkyPosY());
         batch.draw(tBackground, 0, 1);
 
         drawItems(batch);
@@ -63,7 +66,9 @@ public class DrawerLocation {
     }
 
     private void drawStringInfo(SpriteBatch batch) {
-        if (wLocationInfo == null) return;
+        if (wLocationInfo == null || mobile == null) return;
+
+        if (mobile.isShown()) return;
         String message = wLocationInfo.getMessage();
         if (message == null || message.isEmpty()) return;
 
