@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DialogState extends ObjectStateBase {
     private static final long NO_VALUE = 0;
-    private static final long TIME_SHOW = 1100;
+    private static final long TIME_SHOW_DEFAULT = 1100;
     private long timeStartMillis;
     private List<DialogMessage> messages;
     private int currentItemPos;
@@ -27,7 +27,7 @@ public class DialogState extends ObjectStateBase {
     public DialogMessage getCurrentMessage() {
         if (timeStartMillis == NO_VALUE || messages == null || messages.size() == 0) return null;
 
-        if (timeStartMillis + TIME_SHOW < System.currentTimeMillis()) {
+        if (timeStartMillis + messages.get(currentItemPos).getDuration() < System.currentTimeMillis()) {
             if (currentItemPos < messages.size() - 1) {
                 ++currentItemPos;
                 timeStartMillis = System.currentTimeMillis();
@@ -51,7 +51,7 @@ public class DialogState extends ObjectStateBase {
 
         this.messages = new ArrayList<DialogMessage>();
         for (String item : messages) {
-            this.messages.add(DialogMessage.newInstancePlayer(item, TIME_SHOW));
+            this.messages.add(DialogMessage.newInstancePlayer(item, TIME_SHOW_DEFAULT));
         }
     }
 
