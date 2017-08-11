@@ -32,6 +32,7 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.FOREST_TREE);
         data.add(WorldItemsEnum.TREE_HOLE_IN_OUTDOOR);
         data.add(WorldItemsEnum.MODAL_IMAGE_SELFIE_AVAILABLE);
+        data.add(WorldItemsEnum.NANCY_CALL);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {

@@ -45,7 +45,13 @@ public enum StringEnum {
     CLOSE_IMAGE_MODAL("Press ESC to close image"),
     GET_FLOWERS("get the flowers"),
     SUCCESS_GET_FLOWERS("Now I need to pay for flowers."),
-    FAIL_GET_FLOWERS("Where is my purse?");
+    FAIL_GET_FLOWERS("Where is my purse?"),
+    MOBILE_HELP("Press\nLeft, right to change screens.\nUp, down to select item\nI,Z to select tasks, phonebook"),
+    DIALOG_NANCY_1("Hi, Nancy!"),
+    DIALOG_NANCY_2("Nancy:Hi, Joseph!"),
+    DIALOG_NANCY_3("I want to meet you"),
+    DIALOG_NANCY_4("Nancy: OK! I'll be in park soon"),
+    DIALOG_NANCY_FAIL("Nancy will be in park soon");
 
     private String title;
 
