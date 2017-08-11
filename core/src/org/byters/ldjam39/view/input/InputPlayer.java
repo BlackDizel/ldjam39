@@ -16,6 +16,12 @@ public class InputPlayer {
         direction = new Vector2();
     }
 
+    public void resetInput() {
+        if (wPlayer == null) return;
+
+        wPlayer.stop();
+    }
+
     public void input() {
         if (wPlayer == null
                 || wCollistionEnvironment == null) return;

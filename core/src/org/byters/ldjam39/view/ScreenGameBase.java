@@ -8,6 +8,7 @@ import org.byters.engine.controller.ControllerMain;
 import org.byters.engine.view.IScreen;
 import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.controller.InteractionLocation;
+import org.byters.ldjam39.controller.InteractionMobile;
 import org.byters.ldjam39.controller.util.CollisionEnvironment;
 import org.byters.ldjam39.model.GameEnvironment;
 import org.byters.ldjam39.model.Mobile;
@@ -43,6 +44,7 @@ public abstract class ScreenGameBase implements IScreen {
     private InputModalImage inputModalImage;
 
     private InteractionLocation interactionLocation;
+    private InteractionMobile interactionMobile;
 
     ScreenGameBase(int playerInitX, int playerInitY) {
         this.playerPosInitX = playerInitX;
@@ -77,6 +79,8 @@ public abstract class ScreenGameBase implements IScreen {
 
         player = new Player(playerPosInitX, playerPosInitY);
         mobile = new Mobile();
+        interactionMobile = new InteractionMobile(mobile);
+
         environment = new GameEnvironment(getLocationInfo());
         collisionEnvironment = new CollisionEnvironment(environment);
 
@@ -90,7 +94,7 @@ public abstract class ScreenGameBase implements IScreen {
         drawerMobile = new DrawerMobile(mobile);
         drawerMobile.load();
 
-        drawerLocation = new DrawerLocation(getLocationInfo());
+        drawerLocation = new DrawerLocation(getLocationInfo(), mobile);
         drawerLocation.load();
 
         drawerModalImage = new DrawerModalImage(getLocationInfo().getImagesModal(), player);
@@ -98,7 +102,7 @@ public abstract class ScreenGameBase implements IScreen {
         /*endregion*/
 
         /*region input*/
-        inputMobile = new InputMobile(mobile);
+        inputMobile = new InputMobile(mobile, interactionMobile);
 
         inputPlayer = new InputPlayer(player);
         inputPlayer.setCollisionEnvironment(collisionEnvironment);
@@ -138,12 +142,16 @@ public abstract class ScreenGameBase implements IScreen {
 
     @Override
     public void input() {
+        inputPlayer.resetInput();
+
         inputModalImage.input();
         if (inputModalImage.isBlockInput())
             return;
 
-        inputPlayer.input();
         inputMobile.input();
+        if (mobile.isShown())
+            return;
+        inputPlayer.input();
         inputInteraction.input();
     }
 
