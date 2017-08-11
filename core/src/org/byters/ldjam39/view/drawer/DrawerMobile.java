@@ -2,12 +2,14 @@ package org.byters.ldjam39.view.drawer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.byters.engine.controller.ControllerCamera;
 import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.Mobile;
+import org.byters.ldjam39.model.StringEnum;
 import org.byters.ldjam39.model.TaskListEnum;
 import org.byters.ldjam39.view.TextureEnum;
 
@@ -24,6 +26,8 @@ public class DrawerMobile {
     private ArrayList<Texture> listTextureMobilePhonebook;
     private ShapeRenderer shapeRenderer;
 
+    private BitmapFont bitmapFont;
+
     public DrawerMobile(Mobile mobile) {
         this.wMobile = mobile;
 
@@ -39,6 +43,11 @@ public class DrawerMobile {
         batch.draw(texture, ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X),
                 wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y);
 
+        if (wMobile.isShown())
+            bitmapFont.draw(batch, StringEnum.MOBILE_HELP.toString(),
+                    ControllerCamera.getInstance().getCameraPositionX() - ControllerCamera.getInstance().getCameraWidth() / 2.2f,
+                    ControllerCamera.getInstance().getCameraHeight() - 40);
+
         drawShapes(batch);
     }
 
@@ -47,14 +56,26 @@ public class DrawerMobile {
         shapeRenderer.setProjectionMatrix(ControllerCamera.getInstance().getCameraProjection());
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        drawBattery(batch);
-        drawTasksComplete(batch);
+        drawBattery();
+        drawTasksComplete();
+        drawSelectedItem();
 
         shapeRenderer.end();
         batch.begin();
     }
 
-    private void drawTasksComplete(SpriteBatch batch) {
+    private void drawSelectedItem() {
+        if (!wMobile.isShown() || !wMobile.isCurrentScreenPhonebook()) return;
+
+        shapeRenderer.setColor(0, 1, 0, 1);
+
+        float xStart = ControllerWorld.getInstance().getPositionIgnoreCameraX(40);
+        float yStart = 50.5f - 10 * wMobile.getSelectedItem();
+        shapeRenderer.rectLine(
+                xStart, yStart, xStart + 44, yStart, 1);
+    }
+
+    private void drawTasksComplete() {
         shapeRenderer.setColor(0, 1, 0, 1);
 
         //todo refactor
@@ -83,7 +104,7 @@ public class DrawerMobile {
                     2, 2);
     }
 
-    private void drawBattery(SpriteBatch batch) {
+    private void drawBattery() {
 
         float width = ControllerWorldState.getInstance().getCurrentBatteryState() * MAX_BATTERY_WIDTH;
 
@@ -115,10 +136,12 @@ public class DrawerMobile {
         listTextureMobilePhonebook.add(new Texture(Gdx.files.internal(TextureEnum.TEXTURE_MOBILE_PHONEBOOK4.toString())));
 
         shapeRenderer = new ShapeRenderer();
+        bitmapFont = new BitmapFont(Gdx.files.internal(TextureEnum.TEXTURE_FONT.toString()));
     }
 
     public void dispose() {
         wMobile = null;
+        bitmapFont.dispose();
         for (Texture item : listTextureMobileTask)
             item.dispose();
 
