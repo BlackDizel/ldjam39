@@ -3,18 +3,23 @@ package org.byters.ldjam39.model;
 import java.util.ArrayList;
 
 public class Mobile {
+    private static final int MAX_ITEM_POS = 3;
+    public static final int SCREEN_NANCY = 3;
+    public static final int ITEM_NANCY = 1;
     private boolean isShown;
     private MobileScreenEnum currentScreen;
+    private int selectedItem;
     private ArrayList<MobileScreenEnum> listScreenTasks;
     private ArrayList<MobileScreenEnum> listScreenPhonebook;
 
     public Mobile() {
+        selectedItem = 0;
         currentScreen = MobileScreenEnum.SCREEN_TASKS_1;
 
         listScreenTasks = new ArrayList<MobileScreenEnum>();
         listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_1);
         listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_2);
-        listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_3);
+        //listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_3);
 
         listScreenPhonebook = new ArrayList<MobileScreenEnum>();
         listScreenPhonebook.add(MobileScreenEnum.SCREEN_PHONEBOOK_1);
@@ -69,5 +74,36 @@ public class Mobile {
         return isCurrentScreenPhonebook()
                 ? listScreenPhonebook.indexOf(currentScreen)
                 : listScreenTasks.indexOf(currentScreen);
+    }
+
+    public void nextItem() {
+        if (!listScreenPhonebook.contains(currentScreen)) return;
+        ++selectedItem;
+        if (selectedItem > MAX_ITEM_POS) {
+            selectedItem = listScreenPhonebook.indexOf(currentScreen) < listScreenPhonebook.size() - 1
+                    ? 0
+                    : MAX_ITEM_POS;
+            nextScreen();
+        }
+    }
+
+    public void prevItem() {
+        if (!listScreenPhonebook.contains(currentScreen)) return;
+
+        --selectedItem;
+        if (selectedItem < 0) {
+            selectedItem = listScreenPhonebook.indexOf(currentScreen) > 0
+                    ? MAX_ITEM_POS
+                    : 0;
+            prevScreen();
+        }
+    }
+
+    public void openTasks() {
+        currentScreen = MobileScreenEnum.SCREEN_TASKS_1;
+    }
+
+    public int getSelectedItem() {
+        return selectedItem;
     }
 }
