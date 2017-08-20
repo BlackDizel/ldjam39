@@ -13,7 +13,10 @@ public class InputModalImage {
 
     public void input() {
         if (imagesModal == null) return;
-        if (Gdx.input.isKeyJustPressed(InputEnum.KEY_CANCEL.getKey()))
+        if (Gdx.input.isKeyJustPressed(InputEnum.KEY_CANCEL.getKey())
+                || Gdx.input.isKeyJustPressed(InputEnum.KEY_CONFIRM.getKey())
+                || Gdx.input.isKeyJustPressed(InputEnum.KEY_SHOW_MOBILE.getKey())
+                || Gdx.input.isKeyJustPressed(InputEnum.KEY_INTERACT.getKey()))
             imagesModal.cancelImageShow();
     }
 
