@@ -46,7 +46,7 @@ public enum StringEnum {
     GET_FLOWERS("get the flowers"),
     SUCCESS_GET_FLOWERS("Now I need to pay for flowers."),
     FAIL_GET_FLOWERS("Where is my purse?"),
-    MOBILE_HELP("Press:\nI,Z to select tasks, phonebook\nESC to hide the phone\nLeft, right to change screens.\nUp, down to select item"),
+    MOBILE_HELP("Press:\nESC to hide the phone\nWASD to navigate.\nE to interact"),
     DIALOG_NANCY_1("Hi, Nancy!"),
     DIALOG_NANCY_2("Nancy:\"Hi, Joseph!\""),
     DIALOG_NANCY_3("I want to meet you"),
