@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 public abstract class LocationInfoBase {
 
-    private static final float DISTANCE_INTERACT = 12;
+    private static final float DISTANCE_INTERACT = 6;
     private static final int SKY_WIDTH = 725;
     private static final float CLOUD_SPEED = 0.5f;
     ArrayList<InteractedObject> listInteractedObject;
+    LocationInfoModalImageInfo imagesModal;
     private float skyPosX;
     private InteractedObject interactedObject;
     private InteractedObject nearestObject;
-    LocationInfoModalImageInfo imagesModal;
 
     public void load() {
         skyPosX = 0;
@@ -60,7 +60,11 @@ public abstract class LocationInfoBase {
         if (listInteractedObject == null) return;
 
         for (InteractedObject item : listInteractedObject)
-            if (HelperMath.distance(item.getDrawableObject().getOriginX(), xPos) < DISTANCE_INTERACT
+            if ((HelperMath.distance(item.getDrawableObject().getX(), xPos) < DISTANCE_INTERACT
+                    || HelperMath.distance(item.getDrawableObject().getX() + item.getDrawableObject().getWidth(), xPos) < DISTANCE_INTERACT
+                    || item.getDrawableObject().getX() < xPos
+                    && item.getDrawableObject().getX() + item.getDrawableObject().getWidth() > xPos
+            )
                     && ControllerWorldState.getInstance().isWorldContains(item.getWorldItem())) {
                 nearestObject = item;
                 return;

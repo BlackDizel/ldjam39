@@ -24,7 +24,7 @@ public class LocationInfoForest extends LocationInfoBase {
                 InteractEnum.RETURN_TO_PARK_FROM_FOREST,
                 WorldItemsEnum.FOREST_PORTAL,
                 StringEnum.GO_TO_PARK.toString(),
-                new DrawableObject(null, 16, 18, 46, 48)));
+                new DrawableObject(null, -12, 18, 64, 48)));
 
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.GET_WORMS,
