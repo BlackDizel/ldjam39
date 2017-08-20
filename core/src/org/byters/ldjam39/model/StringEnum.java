@@ -56,7 +56,13 @@ public enum StringEnum {
     FAIL_GIVE_GIFT("I need some present"),
     SUCCESS_GIVE_GIFT_1("Happy Birthday, Nancy!"),
     SUCCESS_GIVE_GIFT_2("My favorite flowers!"),
-    SUCCESS_GIVE_GIFT_3("Thank you, Joseph.");
+    SUCCESS_GIVE_GIFT_3("Thank you, Joseph."),
+    GAME_START_DIALOG_1("Oh, no!"),
+    GAME_START_DIALOG_2("I forgot to charge the phone."),
+    GAME_START_DIALOG_3("But now there is no time."),
+    GAME_START_DIALOG_4("I have a lot to do."),
+    GAME_START_DIALOG_5("I must do everything in time"),
+    GAME_START_DIALOG_6("Before the phone power runs out!");
 
     private String title;
 

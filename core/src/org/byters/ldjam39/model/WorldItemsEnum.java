@@ -25,5 +25,6 @@ public enum WorldItemsEnum {
     NANCY_CALL,
     NANCY,
     NANCY_SPRITE,
+    GAME_START,
     HOME_DOOR
 }

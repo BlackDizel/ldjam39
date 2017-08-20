@@ -1,8 +1,10 @@
 package org.byters.ldjam39.model.locationInfo;
 
+import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LocationInfoHome extends LocationInfoBase {
@@ -55,6 +57,21 @@ public class LocationInfoHome extends LocationInfoBase {
                 WorldItemsEnum.CAT_DISH_FULL,
                 null,
                 new DrawableObject(TextureEnum.TEXTURE_CAT_DISH_FULL.toString(), 121, 15, 8, 4)));
+
+        if (ControllerWorldState.getInstance().isWorldContains(WorldItemsEnum.GAME_START)) {
+            ControllerWorldState.getInstance().removeWorldItem(WorldItemsEnum.GAME_START);
+            ControllerWorldState.getInstance().resetDialogs();
+
+            ArrayList<DialogMessage> list = new ArrayList<DialogMessage>();
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_1.toString(), 1000));
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_2.toString(), 2000));
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_3.toString(), 2000));
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_4.toString(), 2000));
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_5.toString(), 2000));
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_6.toString(), 2000));
+
+            ControllerWorldState.getInstance().setMessagesDialog(list);
+        }
     }
 
     @Override

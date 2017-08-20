@@ -35,6 +35,7 @@ public class WorldState extends ObjectStateBase {
         data.add(WorldItemsEnum.NANCY_CALL);
         data.add(WorldItemsEnum.NANCY);
         data.add(WorldItemsEnum.NANCY_SPRITE);
+        data.add(WorldItemsEnum.GAME_START);
     }
 
     public boolean isContainsItem(WorldItemsEnum item) {
