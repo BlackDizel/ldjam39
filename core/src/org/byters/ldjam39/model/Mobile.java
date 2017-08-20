@@ -19,7 +19,6 @@ public class Mobile {
         listScreenTasks = new ArrayList<MobileScreenEnum>();
         listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_1);
         listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_2);
-        //listScreenTasks.add(MobileScreenEnum.SCREEN_TASKS_3);
 
         listScreenPhonebook = new ArrayList<MobileScreenEnum>();
         listScreenPhonebook.add(MobileScreenEnum.SCREEN_PHONEBOOK_1);
@@ -76,6 +75,10 @@ public class Mobile {
 
     public boolean isCurrentScreenPhonebook() {
         return listScreenPhonebook.contains(currentScreen);
+    }
+
+    public boolean isCurrentScreenTasks() {
+        return listScreenTasks.contains(currentScreen);
     }
 
     public int getCurrentScreenIndex() {

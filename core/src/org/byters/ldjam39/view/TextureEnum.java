@@ -11,9 +11,8 @@ public enum TextureEnum {
     TEXTURE_MARKET("graphics/bg_shop.png"),
     TEXTURE_SIGN_PARK("graphics/sign_park.png"),
     TEXTURE_PARK("graphics/bg_park.png"),
-    TEXTURE_MOBILE_TASK1("graphics/mobile/task.png"), //todo replace
+    TEXTURE_MOBILE_TASK1("graphics/mobile/task_1.png"),
     TEXTURE_MOBILE_TASK2("graphics/mobile/task_2.png"),
-    TEXTURE_MOBILE_TASK3("graphics/mobile/task_3.png"),
     TEXTURE_MOBILE_PHONEBOOK1("graphics/mobile/phonebook_1.png"),
     TEXTURE_MOBILE_PHONEBOOK2("graphics/mobile/phonebook_2.png"),
     TEXTURE_MOBILE_PHONEBOOK3("graphics/mobile/phonebook_3.png"),

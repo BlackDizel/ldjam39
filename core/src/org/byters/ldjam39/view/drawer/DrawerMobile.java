@@ -76,31 +76,45 @@ public class DrawerMobile {
     }
 
     private void drawTasksComplete() {
+        if (!wMobile.isCurrentScreenTasks())
+            return;
         shapeRenderer.setColor(0, 1, 0, 1);
 
         //todo refactor
-        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CAT_FOOD))
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CAT_FOOD)
+                && wMobile.getCurrentScreenIndex() == 0)
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 67,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 58,
                     2, 2);
 
-        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CATCH_FISH))
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.NANCY_BD)
+                && wMobile.getCurrentScreenIndex() == 0)
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 52,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 49,
                     2, 2);
 
-        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.FIX_BENCH))
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.CATCH_FISH)
+                && wMobile.getCurrentScreenIndex() == 0)
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 37,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 34,
                     2, 2);
 
-        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.PLANT_TREE))
+
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.FIX_BENCH)
+                && wMobile.getCurrentScreenIndex() == 0)
             shapeRenderer.rect(
                     ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
-                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 28,
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 19,
+                    2, 2);
+
+        if (ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.PLANT_TREE)
+                && wMobile.getCurrentScreenIndex() == 1)
+            shapeRenderer.rect(
+                    ControllerWorld.getInstance().getPositionIgnoreCameraX(POSITION_X + 8),
+                    (wMobile.isShown() ? POSITION_Y_SHOWN : POSITION_Y) + 58,
                     2, 2);
     }
 
@@ -127,7 +141,6 @@ public class DrawerMobile {
         listTextureMobileTask = new ArrayList<Texture>();
         listTextureMobileTask.add(new Texture(Gdx.files.internal(TextureEnum.TEXTURE_MOBILE_TASK1.toString())));
         listTextureMobileTask.add(new Texture(Gdx.files.internal(TextureEnum.TEXTURE_MOBILE_TASK2.toString())));
-        listTextureMobileTask.add(new Texture(Gdx.files.internal(TextureEnum.TEXTURE_MOBILE_TASK3.toString())));
 
         listTextureMobilePhonebook = new ArrayList<Texture>();
         listTextureMobilePhonebook.add(new Texture(Gdx.files.internal(TextureEnum.TEXTURE_MOBILE_PHONEBOOK1.toString())));
