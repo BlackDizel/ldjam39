@@ -9,9 +9,19 @@ import org.byters.ldjam39.view.*;
 public class InteractionLocation {
 
     private LocationInfoBase wLocationInfo;
+    private boolean isTaskComplete;
 
     public InteractionLocation(LocationInfoBase locationInfo) {
         wLocationInfo = locationInfo;
+        isTaskComplete = false;
+    }
+
+    public boolean isTaskComplete() {
+        if (isTaskComplete) {
+            isTaskComplete = false;
+            return true;
+        }
+        return false;
     }
 
     public void checkInteraction() {
@@ -23,6 +33,35 @@ public class InteractionLocation {
         boolean success = false;
         boolean needToShow = true;
         switch (itemInteracted.getAction()) {
+
+            //region tasks
+            case PLANT_TREE:
+                success = ControllerWorldState.getInstance().plantTree();
+                isTaskComplete = success;
+                break;
+
+            case FILL_CAT_DISH:
+                success = ControllerWorldState.getInstance().fillCatDish();
+                isTaskComplete = success;
+                break;
+
+            case FIX_BENCH:
+                success = ControllerWorldState.getInstance().fixBench();
+                isTaskComplete = success;
+                break;
+
+            case CATCH_FISH:
+                success = ControllerWorldState.getInstance().catchFish();
+                isTaskComplete = success;
+                break;
+
+            case GIVE_NANCY_A_GIFT:
+                success = ControllerWorldState.getInstance().happyBirthdayNancy();
+                needToShow = !success;
+                isTaskComplete = success;
+                break;
+            //endregion
+
             case GET_HAMMER:
                 success = ControllerWorldState.getInstance().addToInventory(WorldItemsEnum.HAMMER);
                 break;
@@ -40,17 +79,10 @@ public class InteractionLocation {
                 success = ControllerWorldState.getInstance().getTree();
                 break;
 
-            case PLANT_TREE:
-                success = ControllerWorldState.getInstance().plantTree();
-                break;
-
             case GET_WORMS:
                 success = ControllerWorldState.getInstance().getWorms();
                 break;
 
-            case FILL_CAT_DISH:
-                success = ControllerWorldState.getInstance().fillCatDish();
-                break;
             case BUY_IN_MARKET:
                 needToShow = false;
                 success = ControllerWorldState.getInstance().buyInMarket();
@@ -62,13 +94,7 @@ public class InteractionLocation {
                 success = ControllerWorldState.getInstance().getFlowers();
                 break;
 
-            case FIX_BENCH:
-                success = ControllerWorldState.getInstance().fixBench();
-                break;
-            case CATCH_FISH:
-                success = ControllerWorldState.getInstance().catchFish();
-                break;
-
+            //region navigation
             case GO_TO_OUTDOOR:
                 needToShow = false;
                 ControllerMain.getInstance().navigateScreen(new ScreenGameOutdoor(172, 12));
@@ -101,10 +127,7 @@ public class InteractionLocation {
                 needToShow = false;
                 ControllerMain.getInstance().navigateScreen(new ScreenGamePark(690, 12));
                 break;
-            case GIVE_NANCY_A_GIFT:
-                success = ControllerWorldState.getInstance().happyBirthdayNancy();
-                needToShow = !success;
-                break;
+            //endregion
         }
 
         if (needToShow)

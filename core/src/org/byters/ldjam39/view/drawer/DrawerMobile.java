@@ -59,9 +59,21 @@ public class DrawerMobile {
         drawBattery();
         drawTasksComplete();
         drawSelectedItem();
+        drawIndicator();
 
         shapeRenderer.end();
         batch.begin();
+    }
+
+    private void drawIndicator() {
+        if (!wMobile.isIndicatorShow()) return;
+
+        shapeRenderer.setColor(0, 0, 1, 1);
+
+        shapeRenderer.rect(
+                ControllerCamera.getInstance().getCameraPositionX() + 48,
+                (wMobile.isShown() ? 81 : 9),
+                2, 2);
     }
 
     private void drawSelectedItem() {

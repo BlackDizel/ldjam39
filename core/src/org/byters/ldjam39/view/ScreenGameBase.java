@@ -128,6 +128,8 @@ public abstract class ScreenGameBase implements IScreen {
         getLocationInfo().update();
         getLocationInfo().updateInteractMessage(player.getOriginX());
         interactionLocation.checkInteraction();
+        if (interactionLocation.isTaskComplete())
+            mobile.showIndicator();
 
         if (ControllerWorldState.getInstance().isBatteryEnd()) {
             disposeMusic();
