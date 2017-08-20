@@ -69,6 +69,7 @@ public class LocationInfoHome extends LocationInfoBase {
             list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_4.toString(), 2000));
             list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_5.toString(), 2000));
             list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_6.toString(), 2000));
+            list.add(DialogMessage.newInstancePlayer(StringEnum.GAME_START_DIALOG_7.toString(), 3000));
 
             ControllerWorldState.getInstance().setMessagesDialog(list);
         }

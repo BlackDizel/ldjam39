@@ -62,7 +62,8 @@ public enum StringEnum {
     GAME_START_DIALOG_3("But now there is no time."),
     GAME_START_DIALOG_4("I have a lot to do."),
     GAME_START_DIALOG_5("I must do everything in time"),
-    GAME_START_DIALOG_6("Before the phone power runs out!");
+    GAME_START_DIALOG_6("Before the phone power runs out!"),
+    GAME_START_DIALOG_7("Press SPACE to show tasks");;
 
     private String title;
 
