@@ -22,5 +22,6 @@ public enum InteractEnum {
     GET_TREE,
     PLANT_TREE,
     GET_FLOWERS,
+    GIVE_NANCY_A_GIFT,
     NONE
 }

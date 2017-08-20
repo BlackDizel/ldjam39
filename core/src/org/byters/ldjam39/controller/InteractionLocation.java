@@ -18,7 +18,7 @@ public class InteractionLocation {
         if (wLocationInfo == null) return;
 
         InteractedObject itemInteracted = wLocationInfo.getInteractedObject();
-        if (itemInteracted == null) return;
+        if (itemInteracted == null || itemInteracted.getAction() == null) return;
 
         boolean success = false;
         boolean needToShow = true;
@@ -100,6 +100,10 @@ public class InteractionLocation {
             case RETURN_TO_PARK_FROM_FOREST:
                 needToShow = false;
                 ControllerMain.getInstance().navigateScreen(new ScreenGamePark(690, 12));
+                break;
+            case GIVE_NANCY_A_GIFT:
+                success = ControllerWorldState.getInstance().happyBirthdayNancy();
+                needToShow = !success;
                 break;
         }
 

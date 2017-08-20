@@ -190,6 +190,31 @@ public class ControllerWorldState {
         return false;
     }
 
+
+    boolean happyBirthdayNancy() {
+        InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
+        WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);
+        if (world == null || inventory == null) return false;
+
+        if (world.isContainsItem(WorldItemsEnum.NANCY)
+                && inventory.isContains(WorldItemsEnum.FLOWERS_IN_MARKET)) {
+
+            world.removeItem(WorldItemsEnum.NANCY);
+            inventory.removeItem(WorldItemsEnum.FLOWERS_IN_MARKET);
+
+            ((TaskListState) getData(ObjectStateEnum.TASK_LIST_STATE)).completeTask(TaskListEnum.NANCY_BD);
+
+            ArrayList<DialogMessage> dialogMessages = new ArrayList<DialogMessage>();
+            dialogMessages.add(DialogMessage.newInstancePlayer(StringEnum.SUCCESS_GIVE_GIFT_1.toString(), 2000));
+            dialogMessages.add(DialogMessage.newInstance(StringEnum.SUCCESS_GIVE_GIFT_2.toString(), 240, 60, 2000));
+            dialogMessages.add(DialogMessage.newInstance(StringEnum.SUCCESS_GIVE_GIFT_3.toString(), 240, 60, 2000));
+
+            setMessagesDialog(dialogMessages);
+            return true;
+        }
+        return false;
+    }
+
     boolean getCatFood() {
         InventoryState inventory = (InventoryState) getData(ObjectStateEnum.INVENTORY);
         WorldState world = (WorldState) getData(ObjectStateEnum.WORLD);

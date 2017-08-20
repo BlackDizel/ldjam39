@@ -1,5 +1,6 @@
 package org.byters.ldjam39.model.locationInfo;
 
+import org.byters.ldjam39.controller.ControllerWorldState;
 import org.byters.ldjam39.model.*;
 import org.byters.ldjam39.view.TextureEnum;
 
@@ -47,6 +48,25 @@ public class LocationInfoPark extends LocationInfoBase {
                 Arrays.asList(StringEnum.SUCCESS_CATCH_FISH.toString()),
                 Arrays.asList(StringEnum.FAIL_CATCH_FISH.toString())));
 
+
+        if (!ControllerWorldState.getInstance().isWorldContains(WorldItemsEnum.NANCY_CALL)
+                && !ControllerWorldState.getInstance().isTaskCompleted(TaskListEnum.NANCY_BD)) {
+            listInteractedObject.add(new InteractedObject(
+                    null,
+                    WorldItemsEnum.NANCY_SPRITE,
+                    null,
+                    new DrawableObject(TextureEnum.TEXTURE_NANCY.toString(), 280, 15, 0, 0),
+                    null,
+                    null));
+
+            listInteractedObject.add(new InteractedObject(
+                    InteractEnum.GIVE_NANCY_A_GIFT,
+                    WorldItemsEnum.NANCY,
+                    StringEnum.GIVE_NANCY_A_GIFT.toString(),
+                    new DrawableObject(null, 280, 18, 30, 48),
+                    null,
+                    Arrays.asList(StringEnum.FAIL_GIVE_GIFT.toString())));
+        }
 
         ArrayList<ModalImageInfo> listImageModal = new ArrayList<ModalImageInfo>();
         listImageModal.add(new ModalImageInfo(

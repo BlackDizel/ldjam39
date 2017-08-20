@@ -51,7 +51,12 @@ public enum StringEnum {
     DIALOG_NANCY_2("Nancy:Hi, Joseph!"),
     DIALOG_NANCY_3("I want to meet you"),
     DIALOG_NANCY_4("Nancy: OK! I'll be in park soon"),
-    DIALOG_NANCY_FAIL("Nancy will be in park soon");
+    DIALOG_NANCY_FAIL("Nancy will be in park soon"),
+    GIVE_NANCY_A_GIFT("happy birthday Nancy"),
+    FAIL_GIVE_GIFT("I need some present"),
+    SUCCESS_GIVE_GIFT_1("Happy Birthday, Nancy!"),
+    SUCCESS_GIVE_GIFT_2("My favorite flowers!"),
+    SUCCESS_GIVE_GIFT_3("Thank you, Joseph.");
 
     private String title;
 
