@@ -5,8 +5,11 @@ import java.util.ArrayList;
 public class Mobile {
     public static final int SCREEN_NANCY = 3;
     public static final int ITEM_NANCY = 1;
+    private static final int INDICATOR_SHOW_TIME = 400;
+    private static final int INDICATOR_SHOW_TIME_PAUSE = 150;
+    private static final int INDICATOR_SHOW_TIME_RESUME = 250;
     private static final int MAX_ITEM_POS = 3;
-    private static final long INDICATOR_SHOW_TIME = 1000;
+
     private boolean isShown;
     private MobileScreenEnum currentScreen;
     private int selectedItem;
@@ -131,6 +134,8 @@ public class Mobile {
     }
 
     public boolean isIndicatorShow() {
-        return System.currentTimeMillis() < lastIndicatorShowTime + INDICATOR_SHOW_TIME;
+        return System.currentTimeMillis() < lastIndicatorShowTime + INDICATOR_SHOW_TIME
+                && !(System.currentTimeMillis() > lastIndicatorShowTime + INDICATOR_SHOW_TIME_PAUSE
+                && System.currentTimeMillis() < lastIndicatorShowTime + INDICATOR_SHOW_TIME_RESUME);
     }
 }

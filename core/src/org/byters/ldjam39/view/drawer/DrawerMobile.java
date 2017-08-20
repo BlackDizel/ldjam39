@@ -68,11 +68,11 @@ public class DrawerMobile {
     private void drawIndicator() {
         if (!wMobile.isIndicatorShow()) return;
 
-        shapeRenderer.setColor(0, 0, 1, 1);
+        shapeRenderer.setColor(0, 0.52f, 1, 1);
 
         shapeRenderer.rect(
-                ControllerCamera.getInstance().getCameraPositionX() + 48,
-                (wMobile.isShown() ? 81 : 9),
+                ControllerCamera.getInstance().getCameraPositionX() + 75,
+                (wMobile.isShown() ? 82 : 10),
                 2, 2);
     }
 
