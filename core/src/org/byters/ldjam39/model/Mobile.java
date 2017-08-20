@@ -3,9 +3,9 @@ package org.byters.ldjam39.model;
 import java.util.ArrayList;
 
 public class Mobile {
-    private static final int MAX_ITEM_POS = 3;
     public static final int SCREEN_NANCY = 3;
     public static final int ITEM_NANCY = 1;
+    private static final int MAX_ITEM_POS = 3;
     private boolean isShown;
     private MobileScreenEnum currentScreen;
     private int selectedItem;
@@ -45,25 +45,33 @@ public class Mobile {
     public void nextScreen() {
         int pos = listScreenTasks.indexOf(currentScreen);
         if (pos != -1) {
-            currentScreen = listScreenTasks.get(Math.min(pos + 1, listScreenTasks.size() - 1));
+            currentScreen = pos == listScreenTasks.size() - 1
+                    ? listScreenPhonebook.get(0)
+                    : listScreenTasks.get(pos + 1);
             return;
         }
 
         pos = listScreenPhonebook.indexOf(currentScreen);
         if (pos != -1)
-            currentScreen = listScreenPhonebook.get(Math.min(pos + 1, listScreenPhonebook.size() - 1));
+            currentScreen = pos == listScreenPhonebook.size() - 1
+                    ? listScreenTasks.get(0)
+                    : listScreenPhonebook.get(pos + 1);
     }
 
     public void prevScreen() {
         int pos = listScreenTasks.indexOf(currentScreen);
         if (pos != -1) {
-            currentScreen = listScreenTasks.get(Math.max(pos - 1, 0));
+            currentScreen = pos == 0
+                    ? listScreenPhonebook.get(listScreenPhonebook.size() - 1)
+                    : listScreenTasks.get(pos - 1);
             return;
         }
 
         pos = listScreenPhonebook.indexOf(currentScreen);
         if (pos != -1)
-            currentScreen = listScreenPhonebook.get(Math.max(pos - 1, 0));
+            currentScreen = pos == 0
+                    ? listScreenTasks.get(listScreenTasks.size() - 1)
+                    : listScreenPhonebook.get(pos - 1);
     }
 
     public boolean isCurrentScreenPhonebook() {
@@ -77,7 +85,10 @@ public class Mobile {
     }
 
     public void nextItem() {
-        if (!listScreenPhonebook.contains(currentScreen)) return;
+        if (!listScreenPhonebook.contains(currentScreen)) {
+            nextScreen();
+            return;
+        }
         ++selectedItem;
         if (selectedItem > MAX_ITEM_POS) {
             selectedItem = listScreenPhonebook.indexOf(currentScreen) < listScreenPhonebook.size() - 1
@@ -88,7 +99,10 @@ public class Mobile {
     }
 
     public void prevItem() {
-        if (!listScreenPhonebook.contains(currentScreen)) return;
+        if (!listScreenPhonebook.contains(currentScreen)) {
+            prevScreen();
+            return;
+        }
 
         --selectedItem;
         if (selectedItem < 0) {
