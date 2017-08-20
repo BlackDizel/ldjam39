@@ -15,7 +15,9 @@ public enum InputEnum {
     KEY_MOBILE_TASKS(Input.Keys.NUM_1),
     KEY_MOBILE_NEXT_ITEM(Input.Keys.DOWN),
     KEY_MOBILE_PREV_ITEM(Input.Keys.UP),
-    KEY_SHOW_MOBILE(Input.Keys.SPACE);
+    KEY_SHOW_MOBILE(Input.Keys.SPACE),
+    KEY_UP(Input.Keys.W),
+    KEY_DOWN(Input.Keys.S);
 
     private final int key;
 
