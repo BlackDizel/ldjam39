@@ -148,9 +148,8 @@ public abstract class ScreenGameBase implements IScreen {
         if (inputModalImage.isBlockInput())
             return;
 
-        inputMobile.input();
-        if (mobile.isShown())
-            return;
+        if (inputMobile.input() || mobile.isShown()) return;
+
         inputPlayer.input();
         inputInteraction.input();
     }
