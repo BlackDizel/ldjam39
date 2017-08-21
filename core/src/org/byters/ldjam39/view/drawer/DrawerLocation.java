@@ -2,10 +2,9 @@ package org.byters.ldjam39.view.drawer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.*;
 import org.byters.engine.controller.ControllerCamera;
+import org.byters.engine.controller.ControllerMain;
 import org.byters.ldjam39.controller.ControllerWorld;
 import org.byters.ldjam39.model.Mobile;
 import org.byters.ldjam39.model.locationInfo.LocationInfoBase;
@@ -14,7 +13,7 @@ import org.byters.ldjam39.view.TextureEnum;
 import java.util.ArrayList;
 
 public class DrawerLocation {
-    private static final float MESSAGE_POSITION_Y = ControllerCamera.getInstance().getCameraHeight() - 2;
+    private static final float MESSAGE_POSITION_Y = ControllerCamera.getInstance().getCameraHeight() - 10;
     private LocationInfoBase wLocationInfo;
     private Mobile mobile;
 
@@ -25,6 +24,8 @@ public class DrawerLocation {
     private GlyphLayout layout;
 
     private ArrayList<Texture> listInteractedObject;
+    private ArrayList<Animation<TextureRegion>> listAnimation;
+    private ArrayList<Texture> listAnimationTextures;
 
     public DrawerLocation(LocationInfoBase locationInfo, Mobile mobile) {
         wLocationInfo = locationInfo;
@@ -43,6 +44,33 @@ public class DrawerLocation {
             String tItem = wLocationInfo.getInteractedObjectTexturePath(i);
             listInteractedObject.add(tItem == null || tItem.isEmpty() ? null : new Texture(tItem));
         }
+
+        initAnimation();
+    }
+
+    private void initAnimation() {
+        listAnimationTextures = new ArrayList<Texture>();
+        listAnimation = new ArrayList<Animation<TextureRegion>>();
+        for (int i = 0; i < wLocationInfo.getAnimationsNum(); ++i) {
+
+            int framesNum = wLocationInfo.getAnimationInfo(i).getFramesNum();
+
+            TextureEnum texturePath = wLocationInfo.getAnimationInfo(i).getTexturePath();
+            Texture texture = new Texture(Gdx.files.internal(texturePath.toString()));
+            listAnimationTextures.add(texture);
+
+            int frameWidth = texture.getWidth() / framesNum;
+            int frameHeight = texture.getHeight();
+            TextureRegion[][] frames = TextureRegion.split(texture, frameWidth, frameHeight);
+
+            TextureRegion[] frameAnim = new TextureRegion[framesNum];
+            for (int j = 0; j < framesNum; ++j)
+                frameAnim[j] = frames[0][j];
+
+            Animation<TextureRegion> animation = new Animation<TextureRegion>(0.2f, frameAnim);
+            animation.setPlayMode(Animation.PlayMode.LOOP);
+            listAnimation.add(animation);
+        }
     }
 
     public void dispose() {
@@ -53,6 +81,10 @@ public class DrawerLocation {
         for (int i = 0; i < listInteractedObject.size(); ++i)
             if (listInteractedObject.get(i) != null)
                 listInteractedObject.get(i).dispose();
+
+        for (int i = 0; i < listAnimationTextures.size(); ++i) {
+            listAnimationTextures.get(i).dispose();
+        }
     }
 
     public void draw(SpriteBatch batch) {
@@ -61,8 +93,22 @@ public class DrawerLocation {
         batch.draw(tBackgroundSky, wLocationInfo.getSkyPosXSecond(), wLocationInfo.getSkyPosY());
         batch.draw(tBackground, 0, 1);
 
+        drawAnimations(batch);
+
         drawItems(batch);
         drawStringInfo(batch);
+    }
+
+    private TextureRegion getCurrentFrame(Animation<TextureRegion> animation) {
+        return animation.getKeyFrame(ControllerMain.getInstance().getGameTime() / 1000f);
+    }
+
+    private void drawAnimations(SpriteBatch batch) {
+        if (listAnimation == null) return;
+        for (int i = 0; i < listAnimation.size(); ++i)
+            batch.draw(getCurrentFrame(listAnimation.get(i)),
+                    wLocationInfo.getAnimationInfo(i).getX(),
+                    wLocationInfo.getAnimationInfo(i).getY());
     }
 
     private void drawStringInfo(SpriteBatch batch) {

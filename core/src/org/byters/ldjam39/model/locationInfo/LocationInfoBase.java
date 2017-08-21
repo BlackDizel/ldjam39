@@ -15,6 +15,7 @@ public abstract class LocationInfoBase {
     private static final float CLOUD_SPEED = 0.5f;
     ArrayList<InteractedObject> listInteractedObject;
     LocationInfoModalImageInfo imagesModal;
+    ArrayList<AnimationInfo> listAnimations;
     private float skyPosX;
     private InteractedObject interactedObject;
     private InteractedObject nearestObject;
@@ -112,5 +113,13 @@ public abstract class LocationInfoBase {
 
     public LocationInfoModalImageInfo getImagesModal() {
         return imagesModal;
+    }
+
+    public int getAnimationsNum() {
+        return listAnimations == null ? 0 : listAnimations.size();
+    }
+
+    public AnimationInfo getAnimationInfo(int pos) {
+        return listAnimations == null || pos < 0 || pos >= listAnimations.size() ? null : listAnimations.get(pos);
     }
 }
