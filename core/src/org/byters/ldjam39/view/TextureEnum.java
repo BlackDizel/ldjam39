@@ -31,7 +31,8 @@ public enum TextureEnum {
     TEXTURE_MENU("graphics/menu.png"),
     TEXTURE_BACKGROUND_SKY("graphics/bg_sky.png"),
     TEXTURE_MODAL_IMAGE_SELFIE("graphics/selfie.png"),
-    TEXTURE_NANCY("graphics/nancy.png");
+    TEXTURE_NANCY("graphics/nancy.png"),
+    TEXTURE_ANIMATION_CAT("graphics/cat.png");
 
     private final String path;
 

@@ -14,6 +14,9 @@ public class LocationInfoHome extends LocationInfoBase {
         super.load();
         //todo put into json
 
+        listAnimations = new ArrayList<AnimationInfo>();
+        listAnimations.add(new AnimationInfo(TextureEnum.TEXTURE_ANIMATION_CAT, 4, 86f, 64f));
+
         listInteractedObject.add(new InteractedObject(
                 InteractEnum.GET_HAMMER,
                 WorldItemsEnum.HAMMER,
