@@ -1,0 +1,3 @@
+[submodule "coreEngine"]
+	path = coreEngine
+	url = https://github.com/BlackDizel/gdxBytersEngine
